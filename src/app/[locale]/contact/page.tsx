@@ -68,7 +68,8 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
   return (
     <>
       <PageHero
-        image={images['ambiance/lumieres']}
+        image={images['hero/salle']}
+        position="70% 30%"
         alt=""
         kicker={t('kicker')}
         title={t.rich('title', rich)}

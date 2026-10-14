@@ -12,8 +12,9 @@ for (const path of ['/', '/la-carte', '/reservation', '/le-restaurant', '/contac
       document.getAnimations().every((a) => a.effect?.getTiming().iterations === Infinity || a.playState !== 'running'),
     );
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
-    const serious = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
-    const report = serious.map(
+    // Aucune violation tolérée, quel que soit son niveau (mineur compris)
+    const violations = results.violations;
+    const report = violations.map(
       (v) =>
         `${v.id} — ${v.help}\n${v.nodes.map((n) => `  ${n.target.join(' ')}: ${n.failureSummary ?? ''}\n  ${n.html.slice(0, 200)}`).join('\n')}`,
     );

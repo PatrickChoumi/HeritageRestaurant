@@ -8,8 +8,11 @@ export function PageHero({
   kicker,
   title,
   intro,
+  position = 'center',
 }: {
   image: StaticImageData;
+  /** Cadrage de la photo (object-position CSS). */
+  position?: string;
   alt: string;
   kicker: string;
   title: ReactNode;
@@ -25,6 +28,7 @@ export function PageHero({
         sizes="100vw"
         placeholder="blur"
         className="animate-[kenburns_18s_ease-out_both] object-cover motion-reduce:animate-none"
+        style={{ objectPosition: position }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/45 to-ink" aria-hidden="true" />
       <div className="container-luxe relative text-center">

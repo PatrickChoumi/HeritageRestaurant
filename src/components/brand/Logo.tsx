@@ -5,16 +5,11 @@ export function Monogram({ className, draw = false }: { className?: string; draw
   const stroke = draw ? 'stroke-draw' : undefined;
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true" focusable="false">
-      <defs>
-        <linearGradient id="heritage-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#E9CF75" />
-          <stop offset="50%" stopColor="#D4AF37" />
-          <stop offset="100%" stopColor="#A8862A" />
-        </linearGradient>
-      </defs>
-      <g fill="none" stroke="url(#heritage-gold)" strokeLinecap="square">
+      {/* Couleur pleine (pas de dégradé référencé par id : un logo masqué ailleurs dans la page
+          rendrait le dégradé introuvable et le monogramme invisible) */}
+      <g fill="none" stroke="#D4AF37" strokeLinecap="square">
         <circle className={stroke} cx="50" cy="50" r="46" strokeWidth="1.2" />
-        <circle className={stroke} cx="50" cy="50" r="41" strokeWidth="0.5" />
+        <circle className={stroke} cx="50" cy="50" r="41" strokeWidth="0.5" strokeOpacity="0.7" />
         <path className={stroke} d="M36 30v40M64 30v40M36 50h28" strokeWidth="2.2" />
         <path className={stroke} d="M31 30h10M59 30h10M31 70h10M59 70h10" strokeWidth="1.2" />
         <path className={stroke} d="M50 14l3 4-3 4-3-4z M50 78l3 4-3 4-3-4z" strokeWidth="0.9" />
