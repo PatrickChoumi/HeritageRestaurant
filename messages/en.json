@@ -1,0 +1,467 @@
+{
+  "Meta": {
+    "siteName": "Héritage",
+    "titleTemplate": "%s · Héritage, Bastos",
+    "homeTitle": "Héritage — Contemporary Cameroonian cuisine in Bastos, Yaoundé",
+    "description": "Héritage, a fine-dining restaurant in Bastos (Yaoundé): ndolé with prawns, ember-grilled sea bass and poulet DG, reimagined with the craft of a great table. Book online.",
+    "ogAlt": "Héritage, fine-dining restaurant in Bastos, Yaoundé"
+  },
+  "Nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "restaurant": "The Restaurant",
+    "reservation": "Reservations",
+    "contact": "Contact",
+    "book": "Book a table",
+    "skip": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "primary": "Main navigation",
+    "language": "Choose language",
+    "homeLabel": "Héritage, back to home page"
+  },
+  "Intro": {
+    "loading": "Loading Héritage"
+  },
+  "Hero": {
+    "kicker": "Bastos · Yaoundé",
+    "slides": {
+      "salle": {
+        "title": "The soul of Cameroon,<br></br>the elegance of a great table",
+        "alt": "Héritage’s dining room at night, golden lamps and white tablecloths"
+      },
+      "braise": {
+        "title": "Fire, embers,<br></br>and time",
+        "alt": "A whole sea bass grilling on banana leaf over glowing embers"
+      },
+      "chef": {
+        "title": "Recipes handed down,<br></br>gestures reinvented",
+        "alt": "The chef’s hands plating a dish with tweezers"
+      }
+    },
+    "lead": "Contemporary Cameroonian cuisine, market produce and ember cooking, in the heart of Bastos.",
+    "ctaBook": "Book a table",
+    "ctaMenu": "Discover the menu",
+    "scroll": "Discover",
+    "goTo": "Show image {index}",
+    "pause": "Pause slideshow",
+    "play": "Play slideshow"
+  },
+  "Spirit": {
+    "kicker": "Our Spirit",
+    "title": "A memory,<br></br><em>served in the present</em>",
+    "lead": "Héritage was born from a conviction: Cameroonian cuisine deserves the finest tables.",
+    "body": "Here, ndolé, ember-grilled fish and taro with yellow sauce are crafted with the precision of haute cuisine, never betraying the memory of the mothers and grandmothers who passed them on. Produce comes from Yaoundé’s markets, spices from Penja and the West, and the embers give every plate its character.",
+    "quote": "I cook the flavours of my childhood with techniques learned elsewhere. Produce first, fire second, and always sharing.",
+    "quoteAuthor": "The Chef",
+    "pillars": {
+      "produit": {
+        "title": "Produce",
+        "text": "Vegetables, fish and meat chosen every morning, Penja spices and local cocoa."
+      },
+      "feu": {
+        "title": "Fire",
+        "text": "Slow, controlled wood-ember cooking that reveals every flavour."
+      },
+      "partage": {
+        "title": "Sharing",
+        "text": "Plates designed to bring people together — friends, family or business."
+      }
+    },
+    "cta": "Our story",
+    "imageAlt": "The chef’s hands plating a dish",
+    "detailAlt": "Ndolé with prawns plated on a black dish"
+  },
+  "Signatures": {
+    "kicker": "The Menu",
+    "title": "Our <em>signatures</em>",
+    "intro": "The dishes that tell Héritage’s story, chosen by the Chef and renewed with the seasons.",
+    "cta": "See the full menu",
+    "soldOut": "Sold out today",
+    "prev": "Previous dish",
+    "next": "Next dish"
+  },
+  "Ambiance": {
+    "kicker": "Setting & Atmosphere",
+    "title": "An <em>intimate</em> room,<br></br>evenings that linger",
+    "intro": "Golden light, dark wood and carved panels: a {seats}-cover dining room designed for intimacy, and a private lounge for your special occasions.",
+    "karaokeTitle": "On Fridays, Héritage sings",
+    "karaokeText": "Every Friday night the room comes alive: karaoke until 2 am, house cocktails and grills until the last service.",
+    "open": "Enlarge photo: {caption}",
+    "close": "Close",
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "counter": "{current} / {total}",
+    "items": {
+      "salle": "The main dining room",
+      "panneaux": "Carved wood",
+      "table": "Evening tables",
+      "braise": "The embers",
+      "lumieres": "Golden light",
+      "dressage": "Plating"
+    }
+  },
+  "Booking": {
+    "kicker": "Reservations",
+    "title": "Book <em>your table</em>",
+    "intro": "Choose your date and time: your request is recorded instantly and confirmed by email and WhatsApp.",
+    "steps": {
+      "table": "Your table",
+      "details": "Your details",
+      "done": "Confirmation"
+    },
+    "stepOf": "Step {current} of {total}",
+    "guests": "Number of guests",
+    "guestsValue": "{count, plural, one {# guest} other {# guests}}",
+    "guestsShort": "{count, plural, one {# guest} other {# guests}}",
+    "groupNotice": "More than {max} guests, a private dining or an event? Message us on WhatsApp for a tailored welcome.",
+    "groupCta": "Contact Héritage",
+    "date": "Date",
+    "otherDate": "Other date",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "time": "Time",
+    "services": {
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    },
+    "loadingSlots": "Checking availability…",
+    "closedDay": "The restaurant is closed on that day. Please choose another date.",
+    "noSlots": "No more availability that day for {count, plural, one {# guest} other {# guests}}.",
+    "slotFull": "Full",
+    "slotLimited": "Last seats",
+    "slotPast": "Unavailable",
+    "next": "Continue",
+    "back": "Back",
+    "edit": "Edit",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone (WhatsApp preferred)",
+    "phoneHint": "E.g. +237 6 59 85 56 17 or +44 7700 900123",
+    "occasion": "A special occasion?",
+    "occasions": {
+      "birthday": "Birthday",
+      "business": "Business meal",
+      "romantic": "Romantic dinner",
+      "celebration": "Celebration",
+      "other": "Other"
+    },
+    "requests": "Special requests",
+    "requestsPlaceholder": "Allergies, high chair, terrace table, surprise cake…",
+    "counter": "{count} / {max}",
+    "consent": "I agree that my details are used to manage my booking (<link>privacy</link>).",
+    "honeypot": "Leave this field empty",
+    "summary": "Your table",
+    "summaryLine": "{date} at {time}",
+    "submit": "Confirm booking",
+    "submitting": "Saving…",
+    "errors": {
+      "required": "This field is required.",
+      "invalid": "This value is not valid.",
+      "tooLong": "This text is too long.",
+      "email": "Invalid email address.",
+      "phone": "Invalid number (e.g. +237 6 59 85 56 17 or +44 7700 900123).",
+      "name": "Please enter a name containing letters.",
+      "consent": "Please agree to the use of your details.",
+      "summary": "Please correct the highlighted fields."
+    },
+    "bookingErrors": {
+      "dateInvalid": "Please choose a valid date.",
+      "datePast": "This date is in the past.",
+      "dateTooFar": "Bookings open up to {days} days in advance.",
+      "closed": "The restaurant is closed on that day.",
+      "slotInvalid": "Please choose one of the proposed times.",
+      "tooSoon": "This time is too close: book at least {minutes} minutes ahead, or call us.",
+      "guestsInvalid": "Please enter the number of guests.",
+      "groupTooLarge": "For more than {max} guests, please contact us on WhatsApp.",
+      "full": "This time has just filled up. Please choose another time.",
+      "rateLimited": "Too many attempts from this connection. Try again in a few minutes or message us on WhatsApp.",
+      "server": "Something went wrong. Your booking was not saved: please try again or message us on WhatsApp.",
+      "network": "Unable to connect. Check your network and try again."
+    },
+    "success": {
+      "title": "Thank you, {name}",
+      "lead": "Your booking request has been recorded.",
+      "reference": "Reference",
+      "emailSent": "A summary has just been sent to {email}.",
+      "whatsappTitle": "Instant confirmation",
+      "whatsappText": "Send us the pre-filled WhatsApp message: our team will reply within minutes.",
+      "whatsappCta": "Confirm on WhatsApp",
+      "calendar": "Add to my calendar",
+      "another": "New booking"
+    },
+    "whatsappMessage": "Hello Héritage! I have just booked a table on your website:\n• Reference: {reference}\n• {date} at {time}\n• {guests, plural, one {# guest} other {# guests}}\n• Under the name {name}\nCould you please confirm my booking? Thank you!",
+    "groupWhatsappMessage": "Hello Héritage! I would like to organise a meal for a group of more than {max} people. Could you help me?",
+    "calendarTitle": "{service, select, lunch {Lunch} other {Dinner}} at Héritage",
+    "calendarDescription": "Booking {reference} — {guests, plural, one {# guest} other {# guests}}. To make changes: WhatsApp {phone}.",
+    "policyTitle": "Good to know",
+    "policy": {
+      "hold": "Your table is held for 15 minutes after the booked time.",
+      "change": "Changes or cancellations: a simple WhatsApp message is enough.",
+      "groups": "Groups, private dining, events: contact us directly.",
+      "friday": "Friday nights: karaoke and a festive atmosphere until 2 am."
+    },
+    "copy": "Copy",
+    "copied": "Copied!",
+    "availabilityError": "Unable to load availability.",
+    "retry": "Try again",
+    "more": "10 +",
+    "selectSlot": "Choose a time to continue.",
+    "slotsCount": "{count, plural, =0 {unavailable} one {# time} other {# times}}",
+    "seatsLeft": "{count, plural, one {# seat} other {# seats}}"
+  },
+  "Footer": {
+    "tagline": "Contemporary Cameroonian cuisine in the heart of Bastos.",
+    "hours": "Opening hours",
+    "address": "Address",
+    "contact": "Contact",
+    "follow": "Follow us",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "rights": "© {year} Héritage. All rights reserved.",
+    "credits": "Illustrative visuals generated for this demo.",
+    "openNow": "Open · closes at {time}",
+    "closedNow": "Closed · opens at {time}",
+    "closedUntil": "Closed · opens {day} at {time}",
+    "karaoke": "karaoke",
+    "directions": "Directions",
+    "marquee": "Book a table",
+    "whatsapp": "WhatsApp",
+    "call": "Call"
+  },
+  "Map": {
+    "title": "Map: Héritage, Bastos district, Yaoundé",
+    "load": "Show interactive map",
+    "notice": "The map is provided by Google Maps, which is only contacted after you click.",
+    "open": "Open in Google Maps"
+  },
+  "Days": {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
+  },
+  "DaysLower": {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
+  },
+  "Menu": {
+    "metaTitle": "Menu",
+    "metaDescription": "Héritage’s menu: starters, mains, desserts, drinks and wines. Ndolé, ember-grilled sea bass, poulet DG, Cameroonian cocoa fondant. Allergens listed.",
+    "kicker": "The Menu",
+    "title": "Flavours <em>from here</em>,<br></br>craft from afar",
+    "intro": "A short menu that follows the markets. Every dish lists its allergens — feel free to ask our team.",
+    "tabs": "Menu categories",
+    "filterTitle": "Allergens to avoid",
+    "filterHint": "Hide dishes containing:",
+    "filterClear": "Show all",
+    "hidden": "{count, plural, one {# dish hidden} other {# dishes hidden}} by your filters",
+    "soldOut": "Sold out today",
+    "signature": "Signature",
+    "allergens": "Allergens",
+    "noAllergen": "No major allergen declared",
+    "empty": "No dish in this category matches your filters.",
+    "priceNote": "Net prices in CFA francs. Detailed allergen information available from our team.",
+    "print": "Print the menu",
+    "bookCta": "Book a table",
+    "unavailable": "The menu is temporarily unavailable. Please try again in a moment."
+  },
+  "Allergens": {
+    "gluten": "Gluten",
+    "crustaceans": "Crustaceans",
+    "eggs": "Eggs",
+    "fish": "Fish",
+    "peanuts": "Peanuts",
+    "soy": "Soy",
+    "milk": "Milk",
+    "nuts": "Tree nuts",
+    "celery": "Celery",
+    "mustard": "Mustard",
+    "sesame": "Sesame",
+    "sulphites": "Sulphites",
+    "lupin": "Lupin",
+    "molluscs": "Molluscs"
+  },
+  "Tags": {
+    "vegetarian": "Vegetarian",
+    "vegan": "Vegan",
+    "spicy": "Spicy",
+    "alcohol-free": "Alcohol-free",
+    "to-share": "To share",
+    "local": "Cameroonian terroir"
+  },
+  "Restaurant": {
+    "metaTitle": "The Restaurant",
+    "metaDescription": "The story of Héritage, the Chef’s vision and our 64-cover dining room in Bastos, Yaoundé: contemporary Cameroonian cuisine, embers and market produce.",
+    "kicker": "The Restaurant",
+    "title": "Héritage,<br></br><em>a house of cuisine</em>",
+    "intro": "In Bastos, a table where Cameroonian cuisine is told with elegance.",
+    "story": {
+      "kicker": "Our story",
+      "title": "From a family kitchen<br></br>to a great table",
+      "p1": "It all began around a pot of ndolé, one Sunday, in a family kitchen in Yaoundé. Gestures were handed down, recipes whispered, flavours remained.",
+      "p2": "Héritage gives this cuisine the setting it deserves: an intimate room, attentive service, a curated cellar and plates crafted with the rigour of great houses.",
+      "p3": "Our promise is simple: to help you rediscover dishes you thought you knew."
+    },
+    "chef": {
+      "kicker": "The Chef’s vision",
+      "title": "The right gesture,<br></br><em>the true taste</em>",
+      "quote": "Cameroonian cuisine has nothing to envy any other. My job is to remove the superfluous so the produce can speak.",
+      "p1": "Trained between Yaoundé and Europe, our Chef returns to the source with one obsession: embers, local spices and precision at every moment.",
+      "p2": "The menu follows the markets and the seasons. It changes often but keeps its landmarks: ndolé, ember-grilled fish, poulet DG — reinterpreted, never betrayed."
+    },
+    "place": {
+      "kicker": "The place",
+      "title": "A jewel box in the heart of Bastos",
+      "text": "Soft lighting, dark wood, carved panels and velvet seats: the room was designed as a lounge where time slows down.",
+      "seats": "{count} covers",
+      "seatsText": "An intimate room with generously spaced tables.",
+      "private": "Private lounge",
+      "privateText": "For business dinners and celebrations.",
+      "karaoke": "Friday karaoke",
+      "karaokeText": "A festive atmosphere until 2 am."
+    },
+    "values": {
+      "kicker": "Our commitments",
+      "local": {
+        "title": "Local first",
+        "text": "Regional producers and markets, Penja spices, local cocoa and coffee."
+      },
+      "season": {
+        "title": "With the seasons",
+        "text": "A short menu that evolves with what the land offers."
+      },
+      "welcome": {
+        "title": "Cameroonian hospitality",
+        "text": "Warm hospitality, precise and discreet service."
+      }
+    },
+    "cta": "Live the Héritage experience",
+    "imageAlt": {
+      "salle": "Héritage’s dining room, dressed tables and brass lamps",
+      "chef": "The chef plating a dish",
+      "braise": "Fish grilling over the embers"
+    }
+  },
+  "Contact": {
+    "metaTitle": "Contact & Directions",
+    "metaDescription": "Contact Héritage in Bastos, Yaoundé: phone, WhatsApp, opening hours, directions and contact form.",
+    "kicker": "Contact",
+    "title": "Come <em>and see us</em>",
+    "intro": "A question, an event to organise, a table for tonight? We reply quickly — preferably on WhatsApp.",
+    "address": "Address",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "whatsappCta": "Message us on WhatsApp",
+    "whatsappMessage": "Hello Héritage! I have a question:",
+    "email": "Email",
+    "hours": "Opening hours",
+    "form": {
+      "title": "Write to us",
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "subject": "Subject",
+      "subjects": {
+        "info": "General enquiry",
+        "group": "Group or private dining",
+        "event": "Event",
+        "press": "Press & partnerships",
+        "other": "Other"
+      },
+      "message": "Your message",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Thank you! Your message has been sent and we will reply very soon.",
+      "errors": {
+        "required": "This field is required.",
+        "invalid": "This value is not valid.",
+        "tooShort": "Your message is a little short.",
+        "tooLong": "This text is too long.",
+        "rateLimited": "Too many messages sent. Try again later or message us on WhatsApp.",
+        "server": "The message could not be sent. Please try again or message us on WhatsApp."
+      }
+    }
+  },
+  "Legal": {
+    "metaTitle": "Legal notice & privacy",
+    "title": "Legal notice <em>& privacy</em>",
+    "updated": "Last updated: {date}",
+    "publisherTitle": "Publisher",
+    "publisher": "Restaurant Héritage, Bastos district, Yaoundé (Cameroon). Phone: {phone}.",
+    "hostingTitle": "Hosting",
+    "hosting": "The website is designed to be hosted on Vercel Inc. (440 N Barranca Ave #4133, Covina, CA 91723, USA) or on a Node.js server. Exact hosting details will be completed at launch.",
+    "creditsTitle": "Credits",
+    "credits": "Design and development: Héritage project. Current visuals are illustrations generated for this demo; they will be replaced by photographs of the restaurant.",
+    "privacyTitle": "Personal data",
+    "privacyIntro": "We only collect the information needed to manage your booking or message: first name, last name, email, phone and any special requests.",
+    "privacyUse": "This data is used exclusively to confirm, organise and, if needed, change your visit. It is never sold or used for advertising.",
+    "privacyRetention": "It is kept for a maximum of 12 months after your visit, then deleted.",
+    "privacyRights": "You may request access, correction or deletion of your data at any time via WhatsApp or by phone at {phone}.",
+    "privacyProviders": "Confirmation emails are sent through our email provider; the interactive map is provided by Google Maps and only loads at your request.",
+    "cookiesTitle": "Cookies",
+    "cookies": "This website uses no advertising or analytics cookies. Only technical cookies are set: your language preference and, for restaurant staff, the admin session."
+  },
+  "NotFound": {
+    "kicker": "Error 404",
+    "title": "This page <em>is not on the menu</em>",
+    "text": "The page you are looking for does not exist or has been moved.",
+    "home": "Back to home",
+    "menu": "See the menu"
+  },
+  "Error": {
+    "title": "A small incident in the kitchen",
+    "text": "An unexpected error occurred. Please try again in a moment.",
+    "retry": "Try again"
+  },
+  "Emails": {
+    "received": {
+      "subject": "Your booking request at Héritage — {date}",
+      "preheader": "Reference {reference} · {date} at {time} · {guests, plural, one {# guest} other {# guests}}",
+      "title": "Your request has been received",
+      "intro": "Thank you for choosing Héritage. Here is a summary of your booking request:",
+      "note": "Our team personally confirms every booking. For instant confirmation, simply send us a message on WhatsApp."
+    },
+    "confirmed": {
+      "subject": "Booking confirmed at Héritage — {date}",
+      "preheader": "Your table awaits on {date} at {time}.",
+      "title": "Your table awaits",
+      "intro": "We are delighted to confirm your booking:",
+      "note": "Your table is held for 15 minutes after the booked time. We look forward to welcoming you!"
+    },
+    "cancelled": {
+      "subject": "Booking {reference} cancelled",
+      "preheader": "Your booking on {date} has been cancelled.",
+      "title": "Booking cancelled",
+      "intro": "The booking below has been cancelled:",
+      "note": "We hope to welcome you another time. For any question, message us on WhatsApp."
+    },
+    "greeting": "Hello {name},",
+    "labels": {
+      "reference": "Reference",
+      "date": "Date",
+      "time": "Time",
+      "guests": "Guests",
+      "name": "Name",
+      "phone": "Phone",
+      "occasion": "Occasion",
+      "requests": "Requests"
+    },
+    "guestsValue": "{count, plural, one {# guest} other {# guests}}",
+    "whatsappCta": "Message us on WhatsApp",
+    "directions": "Directions",
+    "change": "Need to change or cancel? Reply to this email or message us on WhatsApp at {phone}.",
+    "signature": "See you soon,",
+    "team": "The Héritage team",
+    "footer": "Héritage · Bastos, Yaoundé · {phone}"
+  }
+}

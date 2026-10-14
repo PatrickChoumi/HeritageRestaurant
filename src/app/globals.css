@@ -1,0 +1,482 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ Charte
+   Fond #0D0D0D / #121212 · Or métallique #D4AF37 · Textes #F5F5F5 / #A0A0A0
+   Contrastes (WCAG) : or/fond 9,2:1 · blanc cassé/fond 18:1 · gris/fond 7,4:1 */
+@theme {
+  --color-ink: #0d0d0d;
+  --color-coal: #121212;
+  --color-graphite: #1a1917;
+  --color-smoke: #242220;
+  --color-gold: #d4af37;
+  --color-gold-light: #e9cf75;
+  --color-gold-dark: #a8862a;
+  --color-ivory: #f5f5f5;
+  --color-mist: #a0a0a0;
+  --color-success: #7fb77e;
+  --color-danger: #e5866f;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-shimmer: shimmer 2.8s ease-in-out infinite;
+
+  --breakpoint-3xl: 112rem;
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes kenburns {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+@theme inline {
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-logo: var(--font-cinzel), 'Cinzel', Georgia, serif;
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --header-h: 5rem;
+  }
+
+  html {
+    background: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-ivory);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Grain très léger pour une texture « papier » */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  /* Un fieldset prend par défaut la largeur minimale de son contenu (débordement des bandes défilantes) */
+  fieldset {
+    min-inline-size: 0;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  /* Barre de défilement discrète */
+  * {
+    scrollbar-color: var(--color-smoke) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+  .kicker::before {
+    content: '';
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold));
+  }
+
+  .title-xl {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6.2vw, 5.6rem);
+    line-height: 1.02;
+    font-weight: 300;
+  }
+  .title-lg {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.6vw, 4rem);
+    line-height: 1.06;
+    font-weight: 300;
+  }
+  .title-md {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .lead {
+    font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+    line-height: 1.75;
+    color: var(--color-mist);
+  }
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0.85rem 1.75rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    border-radius: 0;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      color 0.5s var(--ease-luxe),
+      background-color 0.5s var(--ease-luxe),
+      border-color 0.5s var(--ease-luxe),
+      transform 0.5s var(--ease-luxe);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  /* Balayage doré au survol */
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s var(--ease-luxe);
+  }
+  .btn:not(:disabled):hover::after,
+  .btn:not(:disabled):focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .btn-gold {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+  .btn-gold::after {
+    background: var(--color-gold-light);
+  }
+
+  .btn-outline {
+    border-color: color-mix(in srgb, var(--color-gold) 70%, transparent);
+    color: var(--color-gold);
+  }
+  .btn-outline::after {
+    background: var(--color-gold);
+  }
+  .btn-outline:not(:disabled):hover,
+  .btn-outline:not(:disabled):focus-visible {
+    color: var(--color-ink);
+  }
+
+  .btn-ghost {
+    border-color: color-mix(in srgb, var(--color-ivory) 35%, transparent);
+    color: var(--color-ivory);
+  }
+  .btn-ghost::after {
+    background: var(--color-ivory);
+  }
+  .btn-ghost:not(:disabled):hover,
+  .btn-ghost:not(:disabled):focus-visible {
+    color: var(--color-ink);
+  }
+
+  .link-gold {
+    position: relative;
+    color: var(--color-gold);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s var(--ease-luxe);
+  }
+  .link-gold:hover,
+  .link-gold:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-gold) 45%, transparent), transparent);
+  }
+
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ivory) 22%, transparent);
+    padding: 0.85rem 0 0.7rem;
+    color: var(--color-ivory);
+    transition: border-color 0.4s var(--ease-luxe);
+    border-radius: 0;
+  }
+  .field::placeholder {
+    color: color-mix(in srgb, var(--color-mist) 70%, transparent);
+  }
+  .field:focus {
+    outline: none;
+    border-bottom-color: var(--color-gold);
+  }
+  .field[aria-invalid='true'] {
+    border-bottom-color: var(--color-danger);
+  }
+  .label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mist);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid color-mix(in srgb, var(--color-ivory) 16%, transparent);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--color-mist);
+  }
+
+  .img-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-graphite);
+  }
+  /* Filet doré décalé autour des images */
+  .gold-frame::before {
+    content: '';
+    position: absolute;
+    inset: -0.9rem 0.9rem 0.9rem -0.9rem;
+    border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft {
+    text-shadow: 0 2px 30px rgb(0 0 0 / 0.45);
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------ Introduction
+   Rideau d'ouverture en CSS pur : ne dépend pas de JavaScript et ne bloque jamais la page. */
+.intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--color-ink);
+  animation: curtain-out 0.9s var(--ease-luxe) 1.35s forwards;
+  pointer-events: none;
+}
+.intro-curtain svg .stroke-draw {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw 1.3s var(--ease-luxe) 0.1s forwards;
+}
+.intro-curtain .intro-word {
+  opacity: 0;
+  letter-spacing: 0.9em;
+  animation: word-in 1.1s var(--ease-luxe) 0.35s forwards;
+}
+html.intro-seen .intro-curtain {
+  display: none;
+}
+:root {
+  --intro-delay: 1.25s;
+}
+html.intro-seen {
+  --intro-delay: 0s;
+}
+.intro-in {
+  animation: page-in 1.3s var(--ease-luxe) calc(var(--intro-delay) + var(--d, 0s)) both;
+}
+@keyframes curtain-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes word-in {
+  to {
+    opacity: 1;
+    letter-spacing: 0.42em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --intro-delay: 0s;
+  }
+  .intro-curtain {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------- Impression
+   La carte s'imprime proprement (fond blanc, sans navigation ni images). */
+@media print {
+  @page {
+    margin: 1.6cm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  body::before,
+  header,
+  footer,
+  nav,
+  .no-print,
+  .intro-curtain {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  em {
+    color: #8a6d1d !important;
+  }
+  [role='tabpanel'][hidden] {
+    display: block !important;
+  }
+  * {
+    color: #111 !important;
+    border-color: #ccc !important;
+    box-shadow: none !important;
+  }
+}

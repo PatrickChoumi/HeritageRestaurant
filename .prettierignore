@@ -1,0 +1,9 @@
+.next/
+node_modules/
+drizzle/
+package-lock.json
+.data/
+.outbox/
+*.zip
+test-results/
+playwright-report/

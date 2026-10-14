@@ -1,0 +1,467 @@
+{
+  "Meta": {
+    "siteName": "Héritage",
+    "titleTemplate": "%s · Héritage, Bastos",
+    "homeTitle": "Héritage — Cuisine camerounaise contemporaine à Bastos, Yaoundé",
+    "description": "Héritage, restaurant gastronomique à Bastos (Yaoundé) : ndolé aux crevettes, bar braisé, poulet DG revisités avec l’exigence d’une grande table. Réservez en ligne.",
+    "ogAlt": "Héritage, restaurant gastronomique à Bastos, Yaoundé"
+  },
+  "Nav": {
+    "home": "Accueil",
+    "menu": "La Carte",
+    "restaurant": "Le Restaurant",
+    "reservation": "Réservation",
+    "contact": "Contact",
+    "book": "Réserver une table",
+    "skip": "Aller au contenu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "primary": "Navigation principale",
+    "language": "Choix de la langue",
+    "homeLabel": "Héritage, retour à l’accueil"
+  },
+  "Intro": {
+    "loading": "Chargement de Héritage"
+  },
+  "Hero": {
+    "kicker": "Bastos · Yaoundé",
+    "slides": {
+      "salle": {
+        "title": "L’âme du Cameroun,<br></br>l’élégance d’une grande table",
+        "alt": "La salle d’Héritage le soir, lampes dorées et tables nappées de blanc"
+      },
+      "braise": {
+        "title": "Le feu, la braise,<br></br>et le temps",
+        "alt": "Un bar entier braisé sur feuille de bananier au-dessus des braises"
+      },
+      "chef": {
+        "title": "Des recettes transmises,<br></br>un geste réinventé",
+        "alt": "Les mains du chef dressant une assiette à la pince"
+      }
+    },
+    "lead": "Cuisine camerounaise contemporaine, produits du marché et cuisson à la braise, au cœur du quartier Bastos.",
+    "ctaBook": "Réserver une table",
+    "ctaMenu": "Découvrir la carte",
+    "scroll": "Découvrir",
+    "goTo": "Afficher l’image {index}",
+    "pause": "Mettre le diaporama en pause",
+    "play": "Relancer le diaporama"
+  },
+  "Spirit": {
+    "kicker": "L’Esprit",
+    "title": "Une mémoire,<br></br><em>servie au présent</em>",
+    "lead": "Héritage est né d’une conviction : la cuisine camerounaise mérite les plus belles tables.",
+    "body": "Ici, le ndolé, le poisson braisé ou le taro sauce jaune sont travaillés avec la précision de la haute gastronomie, sans jamais trahir la mémoire des mères et des grands-mères qui nous les ont transmis. Les produits viennent des marchés de Yaoundé, les épices de Penja et de l’Ouest, et la braise donne à chaque assiette son caractère.",
+    "quote": "Je cuisine les saveurs de mon enfance avec les techniques apprises ailleurs. Le produit d’abord, le feu ensuite, et toujours le partage.",
+    "quoteAuthor": "Le Chef",
+    "pillars": {
+      "produit": {
+        "title": "Le produit",
+        "text": "Légumes, poissons et viandes choisis chaque matin, épices de Penja et cacao du pays."
+      },
+      "feu": {
+        "title": "Le feu",
+        "text": "Une cuisine à la braise de bois, lente et maîtrisée, qui révèle les saveurs."
+      },
+      "partage": {
+        "title": "Le partage",
+        "text": "Des assiettes pensées pour se retrouver, entre amis, en famille ou en affaires."
+      }
+    },
+    "cta": "Notre histoire",
+    "imageAlt": "Les mains du chef dressant une assiette",
+    "detailAlt": "Ndolé aux crevettes dressé sur une assiette noire"
+  },
+  "Signatures": {
+    "kicker": "La Carte",
+    "title": "Nos <em>signatures</em>",
+    "intro": "Les plats qui racontent Héritage, choisis par le Chef et renouvelés au fil des saisons.",
+    "cta": "Voir toute la carte",
+    "soldOut": "Épuisé aujourd’hui",
+    "prev": "Plat précédent",
+    "next": "Plat suivant"
+  },
+  "Ambiance": {
+    "kicker": "Cadre & Ambiance",
+    "title": "Un lieu <em>feutré</em>,<br></br>des soirées qui s’étirent",
+    "intro": "Lumières dorées, bois sombre et panneaux sculptés : une salle de {seats} couverts pensée pour l’intimité, et un salon privatisable pour vos grandes occasions.",
+    "karaokeTitle": "Le vendredi, Héritage chante",
+    "karaokeText": "Chaque vendredi soir, la salle s’anime : soirée karaoké jusqu’à 2 h, cocktails maison et grillades jusqu’au dernier service.",
+    "open": "Agrandir la photo : {caption}",
+    "close": "Fermer",
+    "prev": "Photo précédente",
+    "next": "Photo suivante",
+    "counter": "{current} / {total}",
+    "items": {
+      "salle": "La salle principale",
+      "panneaux": "Bois sculpté",
+      "table": "Les tables du soir",
+      "braise": "La braise",
+      "lumieres": "Lumières dorées",
+      "dressage": "Le dressage"
+    }
+  },
+  "Booking": {
+    "kicker": "Réservation",
+    "title": "Réservez <em>votre table</em>",
+    "intro": "Choisissez votre date et votre horaire : votre demande est enregistrée immédiatement et confirmée par e-mail et WhatsApp.",
+    "steps": {
+      "table": "Votre table",
+      "details": "Vos coordonnées",
+      "done": "Confirmation"
+    },
+    "stepOf": "Étape {current} sur {total}",
+    "guests": "Nombre de convives",
+    "guestsValue": "{count, plural, one {# convive} other {# convives}}",
+    "guestsShort": "{count, plural, one {# pers.} other {# pers.}}",
+    "groupNotice": "Plus de {max} convives, privatisation ou événement ? Écrivez-nous sur WhatsApp pour un accueil sur mesure.",
+    "groupCta": "Contacter Héritage",
+    "date": "Date",
+    "otherDate": "Autre date",
+    "today": "Aujourd’hui",
+    "tomorrow": "Demain",
+    "time": "Horaire",
+    "services": {
+      "lunch": "Déjeuner",
+      "dinner": "Dîner"
+    },
+    "loadingSlots": "Recherche des disponibilités…",
+    "closedDay": "Le restaurant est fermé ce jour-là. Choisissez une autre date.",
+    "noSlots": "Plus aucun créneau disponible ce jour-là pour {count, plural, one {# convive} other {# convives}}.",
+    "slotFull": "Complet",
+    "slotLimited": "Dernières places",
+    "slotPast": "Indisponible",
+    "next": "Continuer",
+    "back": "Retour",
+    "edit": "Modifier",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone (WhatsApp de préférence)",
+    "phoneHint": "Ex. 6 59 85 56 17 ou +33 6 12 34 56 78",
+    "occasion": "Une occasion particulière ?",
+    "occasions": {
+      "birthday": "Anniversaire",
+      "business": "Repas d’affaires",
+      "romantic": "Dîner en amoureux",
+      "celebration": "Célébration",
+      "other": "Autre"
+    },
+    "requests": "Demandes particulières",
+    "requestsPlaceholder": "Allergies, chaise bébé, table en terrasse, gâteau surprise…",
+    "counter": "{count} / {max}",
+    "consent": "J’accepte que mes coordonnées soient utilisées pour gérer ma réservation (<link>confidentialité</link>).",
+    "honeypot": "Ne pas remplir ce champ",
+    "summary": "Votre table",
+    "summaryLine": "{date} à {time}",
+    "submit": "Confirmer la réservation",
+    "submitting": "Enregistrement…",
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "invalid": "Cette valeur n’est pas valide.",
+      "tooLong": "Ce texte est trop long.",
+      "email": "Adresse e-mail non valide.",
+      "phone": "Numéro non valide (ex. 6 59 85 56 17 ou +33 6 12 34 56 78).",
+      "name": "Indiquez un nom contenant des lettres.",
+      "consent": "Merci d’accepter l’utilisation de vos coordonnées.",
+      "summary": "Merci de corriger les champs indiqués."
+    },
+    "bookingErrors": {
+      "dateInvalid": "Choisissez une date valide.",
+      "datePast": "Cette date est passée.",
+      "dateTooFar": "Les réservations sont ouvertes jusqu’à {days} jours à l’avance.",
+      "closed": "Le restaurant est fermé ce jour-là.",
+      "slotInvalid": "Choisissez un horaire proposé.",
+      "tooSoon": "Ce créneau est trop proche : réservez au moins {minutes} minutes à l’avance, ou appelez-nous.",
+      "guestsInvalid": "Indiquez le nombre de convives.",
+      "groupTooLarge": "Pour plus de {max} convives, contactez-nous sur WhatsApp.",
+      "full": "Ce créneau vient d’être complet. Choisissez un autre horaire.",
+      "rateLimited": "Trop de tentatives depuis cette connexion. Réessayez dans quelques minutes ou écrivez-nous sur WhatsApp.",
+      "server": "Une erreur est survenue. Votre réservation n’a pas été enregistrée : réessayez ou écrivez-nous sur WhatsApp.",
+      "network": "Connexion impossible. Vérifiez votre réseau puis réessayez."
+    },
+    "success": {
+      "title": "Merci, {name}",
+      "lead": "Votre demande de réservation est enregistrée.",
+      "reference": "Référence",
+      "emailSent": "Un récapitulatif vient d’être envoyé à {email}.",
+      "whatsappTitle": "Validation instantanée",
+      "whatsappText": "Envoyez-nous le message pré-rempli sur WhatsApp : notre équipe vous répond en quelques minutes.",
+      "whatsappCta": "Confirmer sur WhatsApp",
+      "calendar": "Ajouter à mon agenda",
+      "another": "Nouvelle réservation"
+    },
+    "whatsappMessage": "Bonjour Héritage ! Je viens de réserver une table sur votre site :\n• Référence : {reference}\n• {date} à {time}\n• {guests, plural, one {# convive} other {# convives}}\n• Au nom de {name}\nPouvez-vous me confirmer la réservation ? Merci !",
+    "groupWhatsappMessage": "Bonjour Héritage ! Je souhaite organiser un repas pour un groupe de plus de {max} personnes. Pouvez-vous me renseigner ?",
+    "calendarTitle": "{service, select, lunch {Déjeuner} other {Dîner}} chez Héritage",
+    "calendarDescription": "Réservation {reference} — {guests, plural, one {# convive} other {# convives}}. Pour modifier : WhatsApp {phone}.",
+    "policyTitle": "Bon à savoir",
+    "policy": {
+      "hold": "Votre table est gardée 15 minutes après l’heure prévue.",
+      "change": "Modification ou annulation : un simple message WhatsApp suffit.",
+      "groups": "Groupes, privatisation, événements : contactez-nous directement.",
+      "friday": "Le vendredi soir : karaoké, ambiance festive jusqu’à 2 h."
+    },
+    "copy": "Copier",
+    "copied": "Copiée !",
+    "availabilityError": "Impossible de charger les disponibilités.",
+    "retry": "Réessayer",
+    "more": "10 +",
+    "selectSlot": "Choisissez un horaire pour continuer.",
+    "slotsCount": "{count, plural, =0 {indisponible} one {# horaire} other {# horaires}}",
+    "seatsLeft": "{count, plural, one {# place} other {# places}}"
+  },
+  "Footer": {
+    "tagline": "Cuisine camerounaise contemporaine au cœur de Bastos.",
+    "hours": "Horaires",
+    "address": "Adresse",
+    "contact": "Contact",
+    "follow": "Suivez-nous",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "rights": "© {year} Héritage. Tous droits réservés.",
+    "credits": "Visuels d’illustration générés pour la démonstration.",
+    "openNow": "Ouvert · ferme à {time}",
+    "closedNow": "Fermé · ouvre à {time}",
+    "closedUntil": "Fermé · ouvre {day} à {time}",
+    "karaoke": "karaoké",
+    "directions": "Itinéraire",
+    "marquee": "Réserver une table",
+    "whatsapp": "WhatsApp",
+    "call": "Appeler"
+  },
+  "Map": {
+    "title": "Carte : Héritage, quartier Bastos, Yaoundé",
+    "load": "Afficher la carte interactive",
+    "notice": "La carte est fournie par Google Maps, qui ne sera contacté qu’après votre clic.",
+    "open": "Ouvrir dans Google Maps"
+  },
+  "Days": {
+    "0": "Dimanche",
+    "1": "Lundi",
+    "2": "Mardi",
+    "3": "Mercredi",
+    "4": "Jeudi",
+    "5": "Vendredi",
+    "6": "Samedi"
+  },
+  "DaysLower": {
+    "0": "dimanche",
+    "1": "lundi",
+    "2": "mardi",
+    "3": "mercredi",
+    "4": "jeudi",
+    "5": "vendredi",
+    "6": "samedi"
+  },
+  "Menu": {
+    "metaTitle": "La Carte",
+    "metaDescription": "La carte d’Héritage : entrées, plats, desserts, boissons et vins. Ndolé, bar braisé, poulet DG, fondant au cacao du Cameroun. Allergènes indiqués.",
+    "kicker": "La Carte",
+    "title": "Saveurs <em>d’ici</em>,<br></br>exigence d’ailleurs",
+    "intro": "Une carte courte, renouvelée au rythme des marchés. Chaque assiette précise ses allergènes : n’hésitez pas à interroger notre équipe.",
+    "tabs": "Catégories de la carte",
+    "filterTitle": "Allergènes à éviter",
+    "filterHint": "Masquez les plats qui contiennent :",
+    "filterClear": "Tout afficher",
+    "hidden": "{count, plural, one {# plat masqué} other {# plats masqués}} par vos filtres",
+    "soldOut": "Épuisé aujourd’hui",
+    "signature": "Signature",
+    "allergens": "Allergènes",
+    "noAllergen": "Sans allergène majeur déclaré",
+    "empty": "Aucun plat ne correspond à vos filtres dans cette catégorie.",
+    "priceNote": "Prix nets en francs CFA. Informations allergènes détaillées disponibles auprès de notre équipe.",
+    "print": "Imprimer la carte",
+    "bookCta": "Réserver une table",
+    "unavailable": "La carte est momentanément indisponible. Merci de réessayer dans quelques instants."
+  },
+  "Allergens": {
+    "gluten": "Gluten",
+    "crustaceans": "Crustacés",
+    "eggs": "Œufs",
+    "fish": "Poisson",
+    "peanuts": "Arachides",
+    "soy": "Soja",
+    "milk": "Lait",
+    "nuts": "Fruits à coque",
+    "celery": "Céleri",
+    "mustard": "Moutarde",
+    "sesame": "Sésame",
+    "sulphites": "Sulfites",
+    "lupin": "Lupin",
+    "molluscs": "Mollusques"
+  },
+  "Tags": {
+    "vegetarian": "Végétarien",
+    "vegan": "Vegan",
+    "spicy": "Relevé",
+    "alcohol-free": "Sans alcool",
+    "to-share": "À partager",
+    "local": "Terroir camerounais"
+  },
+  "Restaurant": {
+    "metaTitle": "Le Restaurant",
+    "metaDescription": "L’histoire d’Héritage, la vision du Chef et notre salle de 64 couverts à Bastos, Yaoundé : cuisine camerounaise contemporaine, braise et produits du marché.",
+    "kicker": "Le Restaurant",
+    "title": "Héritage,<br></br><em>une maison de cuisine</em>",
+    "intro": "À Bastos, une table où la cuisine camerounaise se raconte avec élégance.",
+    "story": {
+      "kicker": "Notre histoire",
+      "title": "D’une cuisine familiale<br></br>à une grande table",
+      "p1": "Tout commence autour d’une marmite de ndolé, un dimanche, dans une cuisine familiale de Yaoundé. Les gestes se transmettent, les recettes se murmurent, les saveurs restent.",
+      "p2": "Héritage veut offrir à cette cuisine l’écrin qu’elle mérite : une salle feutrée, un service attentionné, une cave choisie et des assiettes travaillées avec la rigueur des grandes maisons.",
+      "p3": "Notre promesse est simple : vous faire redécouvrir des plats que vous croyez connaître."
+    },
+    "chef": {
+      "kicker": "La vision du Chef",
+      "title": "Le geste juste,<br></br><em>le goût vrai</em>",
+      "quote": "La cuisine camerounaise n’a rien à envier à aucune autre. Mon travail, c’est d’enlever le superflu pour que le produit parle.",
+      "p1": "Formé entre Yaoundé et l’Europe, notre Chef revient aux sources avec une idée fixe : la braise, les épices du pays et une précision de chaque instant.",
+      "p2": "Sa carte suit les marchés et les saisons. Elle change souvent, mais garde ses repères : le ndolé, le poisson braisé, le poulet DG, réinterprétés sans être trahis."
+    },
+    "place": {
+      "kicker": "Le lieu",
+      "title": "Un écrin au cœur de Bastos",
+      "text": "Lumières tamisées, bois sombre, panneaux sculptés et assises en velours : la salle a été pensée comme un salon où l’on prend le temps.",
+      "seats": "{count} couverts",
+      "seatsText": "Une salle intime, des tables espacées.",
+      "private": "Salon privatisable",
+      "privateText": "Pour vos dîners d’affaires et célébrations.",
+      "karaoke": "Vendredi karaoké",
+      "karaokeText": "Ambiance festive jusqu’à 2 h du matin."
+    },
+    "values": {
+      "kicker": "Nos engagements",
+      "local": {
+        "title": "Local d’abord",
+        "text": "Producteurs et marchés de la région, épices de Penja, cacao et café du pays."
+      },
+      "season": {
+        "title": "Au rythme des saisons",
+        "text": "Une carte courte qui évolue avec ce que la terre offre."
+      },
+      "welcome": {
+        "title": "L’accueil camerounais",
+        "text": "Une hospitalité chaleureuse, un service précis et discret."
+      }
+    },
+    "cta": "Vivre l’expérience Héritage",
+    "imageAlt": {
+      "salle": "La salle d’Héritage, tables nappées et lampes en laiton",
+      "chef": "Le chef dresse une assiette",
+      "braise": "Poisson braisé sur la braise"
+    }
+  },
+  "Contact": {
+    "metaTitle": "Contact & Accès",
+    "metaDescription": "Contactez Héritage, quartier Bastos à Yaoundé : téléphone, WhatsApp, horaires, plan d’accès et formulaire de contact.",
+    "kicker": "Contact",
+    "title": "Venez <em>nous voir</em>",
+    "intro": "Une question, un événement à organiser, une table pour ce soir ? Nous vous répondons rapidement, par WhatsApp de préférence.",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "whatsapp": "WhatsApp",
+    "whatsappCta": "Écrire sur WhatsApp",
+    "whatsappMessage": "Bonjour Héritage ! J’ai une question :",
+    "email": "E-mail",
+    "hours": "Horaires d’ouverture",
+    "form": {
+      "title": "Écrivez-nous",
+      "name": "Nom complet",
+      "email": "E-mail",
+      "phone": "Téléphone (facultatif)",
+      "subject": "Objet",
+      "subjects": {
+        "info": "Renseignement",
+        "group": "Groupe ou privatisation",
+        "event": "Événement",
+        "press": "Presse & partenariats",
+        "other": "Autre"
+      },
+      "message": "Votre message",
+      "submit": "Envoyer le message",
+      "sending": "Envoi…",
+      "success": "Merci ! Votre message a bien été transmis, nous vous répondons très vite.",
+      "errors": {
+        "required": "Ce champ est obligatoire.",
+        "invalid": "Cette valeur n’est pas valide.",
+        "tooShort": "Votre message est un peu court.",
+        "tooLong": "Ce texte est trop long.",
+        "rateLimited": "Trop de messages envoyés. Réessayez plus tard ou écrivez-nous sur WhatsApp.",
+        "server": "Le message n’a pas pu être envoyé. Réessayez ou écrivez-nous sur WhatsApp."
+      }
+    }
+  },
+  "Legal": {
+    "metaTitle": "Mentions légales & confidentialité",
+    "title": "Mentions légales <em>& confidentialité</em>",
+    "updated": "Dernière mise à jour : {date}",
+    "publisherTitle": "Éditeur du site",
+    "publisher": "Restaurant Héritage, quartier Bastos, Yaoundé (Cameroun). Téléphone : {phone}.",
+    "hostingTitle": "Hébergement",
+    "hosting": "Le site est conçu pour être hébergé sur Vercel Inc. (440 N Barranca Ave #4133, Covina, CA 91723, États-Unis) ou sur un serveur Node.js. Les informations exactes de l’hébergeur sont à compléter lors de la mise en ligne.",
+    "creditsTitle": "Crédits",
+    "credits": "Conception et développement : projet Héritage. Les visuels actuels sont des illustrations générées pour la démonstration ; ils seront remplacés par les photographies du restaurant.",
+    "privacyTitle": "Données personnelles",
+    "privacyIntro": "Nous collectons uniquement les informations nécessaires à la gestion de votre réservation ou de votre message : nom, prénom, e-mail, téléphone et éventuelles demandes particulières.",
+    "privacyUse": "Ces données servent exclusivement à confirmer, organiser et, si besoin, modifier votre venue. Elles ne sont ni vendues ni utilisées à des fins publicitaires.",
+    "privacyRetention": "Elles sont conservées au maximum 12 mois après votre visite, puis supprimées.",
+    "privacyRights": "Vous pouvez à tout moment demander l’accès, la rectification ou la suppression de vos données par WhatsApp ou par téléphone au {phone}.",
+    "privacyProviders": "Les e-mails de confirmation sont envoyés par notre prestataire d’envoi ; la carte interactive est fournie par Google Maps et ne se charge qu’à votre demande.",
+    "cookiesTitle": "Cookies",
+    "cookies": "Le site n’utilise aucun cookie publicitaire ni de mesure d’audience. Seuls des cookies techniques sont déposés : la langue choisie et, pour l’équipe du restaurant, la session d’administration."
+  },
+  "NotFound": {
+    "kicker": "Erreur 404",
+    "title": "Cette page <em>n’est pas au menu</em>",
+    "text": "La page que vous cherchez n’existe pas ou a été déplacée.",
+    "home": "Retour à l’accueil",
+    "menu": "Voir la carte"
+  },
+  "Error": {
+    "title": "Un incident en cuisine",
+    "text": "Une erreur inattendue est survenue. Réessayez dans un instant.",
+    "retry": "Réessayer"
+  },
+  "Emails": {
+    "received": {
+      "subject": "Votre demande de réservation chez Héritage — {date}",
+      "preheader": "Référence {reference} · {date} à {time} · {guests, plural, one {# convive} other {# convives}}",
+      "title": "Votre demande est bien reçue",
+      "intro": "Merci d’avoir choisi Héritage. Voici le récapitulatif de votre demande de réservation :",
+      "note": "Notre équipe confirme chaque réservation personnellement. Pour une validation instantanée, envoyez-nous simplement un message sur WhatsApp."
+    },
+    "confirmed": {
+      "subject": "Réservation confirmée chez Héritage — {date}",
+      "preheader": "Votre table vous attend le {date} à {time}.",
+      "title": "Votre table vous attend",
+      "intro": "Nous avons le plaisir de confirmer votre réservation :",
+      "note": "Votre table est gardée 15 minutes après l’heure prévue. Au plaisir de vous accueillir !"
+    },
+    "cancelled": {
+      "subject": "Réservation {reference} annulée",
+      "preheader": "Votre réservation du {date} a été annulée.",
+      "title": "Réservation annulée",
+      "intro": "Votre réservation ci-dessous a bien été annulée :",
+      "note": "Nous espérons avoir le plaisir de vous recevoir une prochaine fois. Pour toute question, écrivez-nous sur WhatsApp."
+    },
+    "greeting": "Bonjour {name},",
+    "labels": {
+      "reference": "Référence",
+      "date": "Date",
+      "time": "Heure",
+      "guests": "Convives",
+      "name": "Au nom de",
+      "phone": "Téléphone",
+      "occasion": "Occasion",
+      "requests": "Demandes"
+    },
+    "guestsValue": "{count, plural, one {# convive} other {# convives}}",
+    "whatsappCta": "Écrire sur WhatsApp",
+    "directions": "Itinéraire",
+    "change": "Besoin de modifier ou d’annuler ? Répondez à cet e-mail ou écrivez-nous sur WhatsApp au {phone}.",
+    "signature": "À très bientôt,",
+    "team": "L’équipe Héritage",
+    "footer": "Héritage · Quartier Bastos, Yaoundé · {phone}"
+  }
+}
