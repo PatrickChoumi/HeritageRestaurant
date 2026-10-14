@@ -48,13 +48,7 @@ export function formatPhone(e164: string): string {
 const name = z
   .string()
   .transform(cleanText)
-  .pipe(
-    z
-      .string()
-      .min(1, 'required')
-      .max(60, 'tooLong')
-      .regex(/\p{L}/u, 'invalid'),
-  );
+  .pipe(z.string().min(1, 'required').max(60, 'tooLong').regex(/\p{L}/u, 'invalid'));
 
 export const reservationSchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'invalid'),
@@ -107,10 +101,7 @@ export function fieldErrors(error: z.ZodError): Record<string, string> {
 }
 
 export const contactSchema = z.object({
-  name: z
-    .string()
-    .transform(cleanText)
-    .pipe(z.string().min(2, 'required').max(80, 'tooLong')),
+  name: z.string().transform(cleanText).pipe(z.string().min(2, 'required').max(80, 'tooLong')),
   email: z
     .string()
     .transform((v) => v.trim().toLowerCase())
@@ -128,10 +119,7 @@ export const contactSchema = z.object({
       return phone;
     }),
   subject: z.enum(['info', 'group', 'event', 'press', 'other']).catch('info'),
-  message: z
-    .string()
-    .transform(cleanMultiline)
-    .pipe(z.string().min(10, 'tooShort').max(2000, 'tooLong')),
+  message: z.string().transform(cleanMultiline).pipe(z.string().min(10, 'tooShort').max(2000, 'tooLong')),
   locale: z.enum(['fr', 'en']).catch('fr'),
 });
 

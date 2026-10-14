@@ -48,12 +48,16 @@ export async function dashboard(days = 14) {
         bookings: sql<number>`count(*)::int`,
       })
       .from(reservations)
-      .where(and(gte(reservations.date, today), lte(reservations.date, end), inArray(reservations.status, ACTIVE_STATUSES)))
+      .where(
+        and(gte(reservations.date, today), lte(reservations.date, end), inArray(reservations.status, ACTIVE_STATUSES)),
+      )
       .groupBy(reservations.date, reservations.service),
     db
       .select()
       .from(reservations)
-      .where(and(eq(reservations.date, today), inArray(reservations.status, [...ACTIVE_STATUSES, 'completed', 'no_show'])))
+      .where(
+        and(eq(reservations.date, today), inArray(reservations.status, [...ACTIVE_STATUSES, 'completed', 'no_show'])),
+      )
       .orderBy(asc(reservations.time), asc(reservations.id)),
     db
       .select()
@@ -67,7 +71,12 @@ export async function dashboard(days = 14) {
       .where(and(isNotNull(reservations.lastEmailError), gte(reservations.date, today))),
   ]);
 
-  const series: DayCovers[] = Array.from({ length: days }, (_, i) => ({ date: addDays(today, i), lunch: 0, dinner: 0, bookings: 0 }));
+  const series: DayCovers[] = Array.from({ length: days }, (_, i) => ({
+    date: addDays(today, i),
+    lunch: 0,
+    dinner: 0,
+    bookings: 0,
+  }));
   for (const row of perDay) {
     const day = series.find((d) => d.date === row.date);
     if (!day) continue;
@@ -132,7 +141,11 @@ export async function listReservations({
     .select()
     .from(reservations)
     .where(and(...filters))
-    .orderBy(range === 'past' ? desc(reservations.date) : asc(reservations.date), asc(reservations.time), asc(reservations.id))
+    .orderBy(
+      range === 'past' ? desc(reservations.date) : asc(reservations.date),
+      asc(reservations.time),
+      asc(reservations.id),
+    )
     .limit(300);
 }
 

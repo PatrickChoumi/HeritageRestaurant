@@ -40,8 +40,14 @@ for await (const file of walk(SOURCE)) {
     .replace(/^-|-$/g, '');
   const out = path.join(TARGET, path.dirname(relative), `${slug}.webp`);
   await fs.mkdir(path.dirname(out), { recursive: true });
-  const info = await sharp(file).rotate().resize({ width: 2400, height: 2400, fit: 'inside', withoutEnlargement: true }).webp({ quality: 84, effort: 6 }).toFile(out);
-  console.info(`✓ ${path.relative(process.cwd(), out)} (${info.width}×${info.height}, ${Math.round(info.size / 1024)} Ko)`);
+  const info = await sharp(file)
+    .rotate()
+    .resize({ width: 2400, height: 2400, fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 84, effort: 6 })
+    .toFile(out);
+  console.info(
+    `✓ ${path.relative(process.cwd(), out)} (${info.width}×${info.height}, ${Math.round(info.size / 1024)} Ko)`,
+  );
   count += 1;
 }
 console.info(count ? `${count} image(s) prête(s). Ajoutez-les dans src/lib/images.ts.` : 'Aucune image trouvée.');

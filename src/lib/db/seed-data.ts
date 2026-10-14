@@ -41,7 +41,8 @@ export const seedMenu: SeedCategory[] = [
         signature: true,
         fr: {
           name: 'Soya de bœuf au yaji',
-          description: 'Fines lamelles de bœuf grillées à la braise, mélange yaji maison, oignon rouge et piment frais.',
+          description:
+            'Fines lamelles de bœuf grillées à la braise, mélange yaji maison, oignon rouge et piment frais.',
         },
         en: {
           name: 'Beef soya with yaji spice',
@@ -104,7 +105,8 @@ export const seedMenu: SeedCategory[] = [
         signature: true,
         fr: {
           name: 'Ndolé aux crevettes',
-          description: 'Feuilles de ndolé mijotées à la pâte d’arachide, crevettes géantes rôties, plantain mûr caramélisé.',
+          description:
+            'Feuilles de ndolé mijotées à la pâte d’arachide, crevettes géantes rôties, plantain mûr caramélisé.',
         },
         en: {
           name: 'Ndolé with prawns',
@@ -124,7 +126,8 @@ export const seedMenu: SeedCategory[] = [
         },
         en: {
           name: 'Ember-grilled sea bass, miondo & chilli sauce',
-          description: 'Wood-fire grilled sea bass fillet, miondo cassava sticks, grilled plantain, spiced tomato sauce.',
+          description:
+            'Wood-fire grilled sea bass fillet, miondo cassava sticks, grilled plantain, spiced tomato sauce.',
         },
       },
       {

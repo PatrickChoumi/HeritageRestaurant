@@ -63,7 +63,8 @@ export function restaurantJsonLd(locale: AppLocale, description: string): Record
       addressCountry: restaurant.address.country,
     },
     geo: { '@type': 'GeoCoordinates', latitude: restaurant.geo.lat, longitude: restaurant.geo.lng },
-    servesCuisine: locale === 'fr' ? ['Camerounaise', 'Africaine', 'Gastronomique'] : ['Cameroonian', 'African', 'Fine dining'],
+    servesCuisine:
+      locale === 'fr' ? ['Camerounaise', 'Africaine', 'Gastronomique'] : ['Cameroonian', 'African', 'Fine dining'],
     priceRange: '5 000 – 25 000 FCFA',
     currenciesAccepted: restaurant.currency,
     acceptsReservations: absoluteUrl(locale, '/reservation'),
@@ -84,7 +85,10 @@ export function restaurantJsonLd(locale: AppLocale, description: string): Record
         inLanguage: locale,
         actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'],
       },
-      result: { '@type': 'FoodEstablishmentReservation', name: locale === 'fr' ? 'Réserver une table' : 'Book a table' },
+      result: {
+        '@type': 'FoodEstablishmentReservation',
+        name: locale === 'fr' ? 'Réserver une table' : 'Book a table',
+      },
     },
   };
 }

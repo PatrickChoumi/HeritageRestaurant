@@ -90,7 +90,12 @@ export async function SiteFooter() {
                 </span>
               </span>
             </address>
-            <a href={googleMapsUrl()} target="_blank" rel="noopener noreferrer" className="link-gold mt-3 inline-block text-xs tracking-[0.18em] uppercase">
+            <a
+              href={googleMapsUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-gold mt-3 inline-block text-xs tracking-[0.18em] uppercase"
+            >
               {t('directions')} ↗
             </a>
           </div>
@@ -98,20 +103,31 @@ export async function SiteFooter() {
             <h2 className="kicker mb-6">{t('contact')}</h2>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href={`tel:${restaurant.phone.e164}`} className="flex items-center gap-3 text-ivory/85 hover:text-gold">
+                <a
+                  href={`tel:${restaurant.phone.e164}`}
+                  className="flex items-center gap-3 text-ivory/85 hover:text-gold"
+                >
                   <Phone size={18} className="text-gold" />
                   {restaurant.phone.display}
                 </a>
               </li>
               <li>
-                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-ivory/85 hover:text-gold">
+                <a
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-ivory/85 hover:text-gold"
+                >
                   <WhatsApp size={18} className="text-gold" />
                   {t('whatsapp')}
                 </a>
               </li>
               {restaurant.publicEmail && (
                 <li>
-                  <a href={`mailto:${restaurant.publicEmail}`} className="flex items-center gap-3 break-all text-ivory/85 hover:text-gold">
+                  <a
+                    href={`mailto:${restaurant.publicEmail}`}
+                    className="flex items-center gap-3 break-all text-ivory/85 hover:text-gold"
+                  >
                     <Mail size={18} className="shrink-0 text-gold" />
                     {restaurant.publicEmail}
                   </a>

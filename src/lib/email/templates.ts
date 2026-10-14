@@ -116,7 +116,8 @@ function reservationRows(locale: AppLocale, r: ReservationEmailData, withContact
     [t('labels.name'), escapeHtml(`${r.firstName} ${r.lastName}`)],
   ];
   if (withContact) rows.push([t('labels.phone'), escapeHtml(formatPhone(r.phone))]);
-  if (r.occasion) rows.push([t('labels.occasion'), escapeHtml(booking(`occasions.${r.occasion}` as 'occasions.other'))]);
+  if (r.occasion)
+    rows.push([t('labels.occasion'), escapeHtml(booking(`occasions.${r.occasion}` as 'occasions.other'))]);
   if (r.requests) rows.push([t('labels.requests'), nl2br(r.requests)]);
   return rows;
 }
@@ -145,7 +146,10 @@ export function reservationWhatsAppText(locale: AppLocale, r: ReservationEmailDa
 }
 
 /** E-mail au client : demande reçue, réservation confirmée ou annulée. */
-export function clientReservationEmail(kind: 'received' | 'confirmed' | 'cancelled', r: ReservationEmailData): EmailContent {
+export function clientReservationEmail(
+  kind: 'received' | 'confirmed' | 'cancelled',
+  r: ReservationEmailData,
+): EmailContent {
   const locale = r.locale;
   const t = translator(locale, 'Emails');
   const date = formatDateLong(locale, r.date);
@@ -165,7 +169,9 @@ export function clientReservationEmail(kind: 'received' | 'confirmed' | 'cancell
       : `${button(whatsapp, t('whatsappCta'))}${button(googleMapsUrl(), t('directions'), false)}`,
     `<div style="height:16px"></div>`,
     kind === 'cancelled' ? '' : muted(escapeHtml(t('change', { phone: restaurant.phone.display }))),
-    p(`${escapeHtml(t('signature'))}<br><span style="color:${GOLD};font-family:Georgia,serif;font-size:17px;">${escapeHtml(t('team'))}</span>`),
+    p(
+      `${escapeHtml(t('signature'))}<br><span style="color:${GOLD};font-family:Georgia,serif;font-size:17px;">${escapeHtml(t('team'))}</span>`,
+    ),
   ].join('');
 
   const text = [
@@ -213,7 +219,9 @@ export function restaurantReservationEmail(r: ReservationEmailData & { id: numbe
   rows.push(['Langue', r.locale === 'fr' ? 'Français' : 'Anglais']);
 
   const body = [
-    p(`Nouvelle demande de réservation pour le <strong>${escapeHtml(date)} à ${escapeHtml(time)}</strong> (${r.service === 'lunch' ? 'déjeuner' : 'dîner'}).`),
+    p(
+      `Nouvelle demande de réservation pour le <strong>${escapeHtml(date)} à ${escapeHtml(time)}</strong> (${r.service === 'lunch' ? 'déjeuner' : 'dîner'}).`,
+    ),
     details(rows),
     `${button(adminUrl, 'Ouvrir dans l’administration')}${button(clientWhatsapp, 'Confirmer au client (WhatsApp)', false)}${button(`tel:${r.phone}`, 'Appeler', false)}`,
   ].join('');
@@ -271,7 +279,13 @@ export function restaurantContactEmail(m: ContactEmailData): EmailContent {
       body: `${details(rows)}${button(`${restaurant.siteUrl}/admin/messages`, 'Voir dans l’administration')}`,
       footer: 'Message automatique du site Héritage. Répondez directement à cet e-mail pour écrire au client.',
     }),
-    text: [`Nouveau message (${subjectLabel})`, `De : ${m.name} <${m.email}>`, m.phone ? `Téléphone : ${m.phone}` : '', '', m.message]
+    text: [
+      `Nouveau message (${subjectLabel})`,
+      `De : ${m.name} <${m.email}>`,
+      m.phone ? `Téléphone : ${m.phone}` : '',
+      '',
+      m.message,
+    ]
       .filter(Boolean)
       .join('\n'),
   };

@@ -27,10 +27,12 @@ export function PageHero({
         className="animate-[kenburns_18s_ease-out_both] object-cover motion-reduce:animate-none"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/45 to-ink" aria-hidden="true" />
-      <div className="relative container-luxe text-center">
-        <p className="kicker justify-center animate-[page-in_1s_0.1s_both]">{kicker}</p>
-        <h1 className="title-xl mx-auto mt-6 max-w-4xl text-shadow-soft animate-[page-in_1.1s_0.2s_both]">{title}</h1>
-        {intro && <p className="lead mx-auto mt-6 max-w-2xl text-ivory/80 animate-[page-in_1.1s_0.35s_both]">{intro}</p>}
+      <div className="container-luxe relative text-center">
+        <p className="kicker animate-[page-in_1s_0.1s_both] justify-center">{kicker}</p>
+        <h1 className="title-xl text-shadow-soft mx-auto mt-6 max-w-4xl animate-[page-in_1.1s_0.2s_both]">{title}</h1>
+        {intro && (
+          <p className="lead mx-auto mt-6 max-w-2xl animate-[page-in_1.1s_0.35s_both] text-ivory/80">{intro}</p>
+        )}
       </div>
     </section>
   );

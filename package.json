@@ -23,7 +23,8 @@
     "db:setup": "npm run db:migrate && npm run db:seed",
     "test:watch": "vitest",
     "format": "prettier --write .",
-    "check": "npm run lint && npm run typecheck && npm run test"
+    "check": "npm run lint && npm run typecheck && npm run test",
+    "vercel-build": "npm run db:setup && next build"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",

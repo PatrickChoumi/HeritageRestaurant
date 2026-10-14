@@ -11,7 +11,10 @@ const UPDATED = '2026-10-14';
 export async function generateMetadata({ params }: PageProps<'/[locale]/mentions-legales'>): Promise<Metadata> {
   const locale = (await params).locale as AppLocale;
   const t = await getTranslations({ locale, namespace: 'Legal' });
-  return { ...pageMetadata({ locale, href: '/mentions-legales', title: t('metaTitle'), description: t('privacyIntro') }), robots: { index: false } };
+  return {
+    ...pageMetadata({ locale, href: '/mentions-legales', title: t('metaTitle'), description: t('privacyIntro') }),
+    robots: { index: false },
+  };
 }
 
 export default async function LegalPage({ params }: PageProps<'/[locale]/mentions-legales'>) {
@@ -25,7 +28,13 @@ export default async function LegalPage({ params }: PageProps<'/[locale]/mention
     { title: t('hostingTitle'), paragraphs: [t('hosting')] },
     {
       title: t('privacyTitle'),
-      paragraphs: [t('privacyIntro'), t('privacyUse'), t('privacyRetention'), t('privacyRights', { phone }), t('privacyProviders')],
+      paragraphs: [
+        t('privacyIntro'),
+        t('privacyUse'),
+        t('privacyRetention'),
+        t('privacyRights', { phone }),
+        t('privacyProviders'),
+      ],
     },
     { title: t('cookiesTitle'), paragraphs: [t('cookies')] },
     { title: t('creditsTitle'), paragraphs: [t('credits')] },

@@ -101,14 +101,7 @@ export function serviceOf(date: string, time: string): ServiceId | undefined {
 }
 
 export type BookingError =
-  | 'dateInvalid'
-  | 'datePast'
-  | 'dateTooFar'
-  | 'closed'
-  | 'slotInvalid'
-  | 'tooSoon'
-  | 'guestsInvalid'
-  | 'groupTooLarge';
+  'dateInvalid' | 'datePast' | 'dateTooFar' | 'closed' | 'slotInvalid' | 'tooSoon' | 'guestsInvalid' | 'groupTooLarge';
 
 /** Règles de réservation indépendantes de la base (la capacité est vérifiée à part). */
 export function checkBookable(

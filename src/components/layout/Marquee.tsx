@@ -6,10 +6,13 @@ export function Marquee({ label }: { label: string }) {
   return (
     <Link
       href="/reservation"
-      className="group relative block overflow-hidden border-y border-gold/15 bg-coal py-7 no-print"
+      className="group no-print relative block overflow-hidden border-y border-gold/15 bg-coal py-7"
       aria-label={label}
     >
-      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none" aria-hidden="true">
+      <div
+        className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+        aria-hidden="true"
+      >
         {[0, 1].map((half) => (
           <div key={half} className="flex shrink-0 items-center">
             {items.map((_, i) => (

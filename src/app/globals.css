@@ -305,7 +305,12 @@
 
   .hairline {
     height: 1px;
-    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-gold) 45%, transparent), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--color-gold) 45%, transparent),
+      transparent
+    );
   }
 
   .field {

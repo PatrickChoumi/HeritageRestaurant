@@ -63,7 +63,10 @@ async function createEmbeddedDb(): Promise<Db> {
   // Chemins lus à l'exécution (base locale de développement) : exclus du traçage des fichiers du build
   const dataDir = inMemory
     ? undefined
-    : path.resolve(/* turbopackIgnore: true */ process.env.PGLITE_DATA_DIR ?? path.join(/* turbopackIgnore: true */ process.cwd(), '.data', 'pglite'));
+    : path.resolve(
+        /* turbopackIgnore: true */ process.env.PGLITE_DATA_DIR ??
+          path.join(/* turbopackIgnore: true */ process.cwd(), '.data', 'pglite'),
+      );
   if (dataDir) acquireLock(dataDir);
 
   const client = dataDir ? new PGlite(dataDir) : new PGlite();

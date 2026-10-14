@@ -16,7 +16,14 @@ export async function BookingSection({ headingLevel = 'h2' }: { headingLevel?: '
 
   return (
     <section id="reservation" className="relative isolate overflow-hidden py-28 md:py-36">
-      <Image src={images['ambiance/table']} alt="" fill sizes="100vw" placeholder="blur" className="-z-20 object-cover opacity-25" />
+      <Image
+        src={images['ambiance/table']}
+        alt=""
+        fill
+        sizes="100vw"
+        placeholder="blur"
+        className="-z-20 object-cover opacity-25"
+      />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/90 to-ink" aria-hidden="true" />
 
       <div className="container-luxe grid gap-14 lg:grid-cols-12 lg:gap-16">
@@ -41,7 +48,12 @@ export async function BookingSection({ headingLevel = 'h2' }: { headingLevel?: '
             <a href={`tel:${restaurant.phone.e164}`} className="btn btn-ghost min-h-11 px-5 py-2.5">
               <Phone size={16} /> {restaurant.phone.display}
             </a>
-            <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost min-h-11 px-5 py-2.5">
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost min-h-11 px-5 py-2.5"
+            >
               <WhatsApp size={16} /> WhatsApp
             </a>
           </Reveal>

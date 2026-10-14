@@ -20,7 +20,10 @@ export default async function DishPage({ params, searchParams }: PageProps<'/adm
 
   return (
     <div className="mx-auto max-w-5xl">
-      <Link href="/admin/carte" className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-mist uppercase hover:text-ivory">
+      <Link
+        href="/admin/carte"
+        className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-mist uppercase hover:text-ivory"
+      >
         <ArrowLeft size={14} /> La carte
       </Link>
       <h1 className="title-md mt-4 mb-10">{dish ? dish.fr.name : 'Nouveau plat'}</h1>

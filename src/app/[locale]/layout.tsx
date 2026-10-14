@@ -7,6 +7,7 @@ import { fontVariables } from '../fonts';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { IntroCurtain, introScript } from '@/components/layout/IntroCurtain';
+import { MotionProvider } from '@/components/layout/MotionProvider';
 import { restaurant } from '@/lib/restaurant';
 import '../globals.css';
 
@@ -77,11 +78,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           {nav('skip')}
         </a>
         <NextIntlClientProvider messages={clientMessages}>
-          <SiteHeader />
-          <main id="contenu" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          <MotionProvider>
+            <SiteHeader />
+            <main id="contenu" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

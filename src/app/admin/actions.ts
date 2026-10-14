@@ -40,7 +40,10 @@ function safeNext(value: FormDataEntryValue | null): string {
 }
 
 export async function loginAction(_: LoginState, formData: FormData): Promise<LoginState> {
-  const email = String(formData.get('email') ?? '').trim().toLowerCase().slice(0, 254);
+  const email = String(formData.get('email') ?? '')
+    .trim()
+    .toLowerCase()
+    .slice(0, 254);
   const password = String(formData.get('password') ?? '').slice(0, 200);
 
   const [byIp, byAccount] = await Promise.all([
@@ -83,7 +86,10 @@ export async function changePasswordAction(_: PasswordState, formData: FormData)
   if (next.length < PASSWORD_MIN_LENGTH) return { error: 'tooShort' };
   if (next !== confirm) return { error: 'mismatch' };
   if (next === current) return { error: 'same' };
-  await db.update(adminUsers).set({ passwordHash: await hashPassword(next) }).where(eq(adminUsers.id, user.id));
+  await db
+    .update(adminUsers)
+    .set({ passwordHash: await hashPassword(next) })
+    .where(eq(adminUsers.id, user.id));
   await destroyOtherSessions(session);
   return { ok: true };
 }
@@ -101,7 +107,11 @@ export async function setReservationStatus(
   const parsed = statusSchema.safeParse(status);
   if (!parsed.success || !Number.isInteger(id)) return { ok: false, error: 'invalid' };
   const db = await getDb();
-  const [updated] = await db.update(reservations).set({ status: parsed.data }).where(eq(reservations.id, id)).returning();
+  const [updated] = await db
+    .update(reservations)
+    .set({ status: parsed.data })
+    .where(eq(reservations.id, id))
+    .returning();
   if (!updated) return { ok: false, error: 'notFound' };
 
   let emailed = false;
@@ -122,7 +132,10 @@ export async function saveInternalNote(id: number, note: string): Promise<{ ok: 
   if (!Number.isInteger(id)) return { ok: false };
   const db = await getDb();
   const clean = cleanMultiline(String(note)).slice(0, 1000);
-  await db.update(reservations).set({ internalNote: clean || null }).where(eq(reservations.id, id));
+  await db
+    .update(reservations)
+    .set({ internalNote: clean || null })
+    .where(eq(reservations.id, id));
   revalidatePath('/admin', 'layout');
   return { ok: true };
 }
@@ -138,7 +151,10 @@ export async function resendNotifications(id: number): Promise<{ ok: boolean; er
     .returning();
   if (!row) return { ok: false, error: 'notFound' };
   await notifyNewReservation(row);
-  const [after] = await db.select({ error: reservations.lastEmailError }).from(reservations).where(eq(reservations.id, id));
+  const [after] = await db
+    .select({ error: reservations.lastEmailError })
+    .from(reservations)
+    .where(eq(reservations.id, id));
   revalidatePath('/admin', 'layout');
   return { ok: !after?.error, error: after?.error };
 }
@@ -148,7 +164,10 @@ export async function resendNotifications(id: number): Promise<{ ok: boolean; er
 export async function setMessageRead(id: number, read: boolean): Promise<void> {
   await requireAdmin();
   const db = await getDb();
-  await db.update(contactMessages).set({ readAt: read ? new Date() : null }).where(eq(contactMessages.id, id));
+  await db
+    .update(contactMessages)
+    .set({ readAt: read ? new Date() : null })
+    .where(eq(contactMessages.id, id));
   revalidatePath('/admin', 'layout');
 }
 
@@ -171,16 +190,8 @@ export async function toggleDish(id: number, field: 'isAvailable' | 'isSignature
   refreshPublicSite();
 }
 
-const text = (max: number, min = 0) =>
-  z
-    .string()
-    .transform(cleanText)
-    .pipe(z.string().min(min).max(max));
-const longText = (max: number) =>
-  z
-    .string()
-    .transform(cleanMultiline)
-    .pipe(z.string().max(max));
+const text = (max: number, min = 0) => z.string().transform(cleanText).pipe(z.string().min(min).max(max));
+const longText = (max: number) => z.string().transform(cleanMultiline).pipe(z.string().max(max));
 
 const dishSchema = z.object({
   id: z.coerce.number().int().positive().optional(),
@@ -271,7 +282,10 @@ export async function saveDishAction(_: DishFormState, formData: FormData): Prom
         .select({ max: sql<number>`coalesce(max(${dishes.position}), -1)::int + 1` })
         .from(dishes)
         .where(eq(dishes.categoryId, d.categoryId));
-      const [created] = await tx.insert(dishes).values({ ...values, slug, position: max }).returning({ id: dishes.id });
+      const [created] = await tx
+        .insert(dishes)
+        .values({ ...values, slug, position: max })
+        .returning({ id: dishes.id });
       dishId = created!.id;
     }
     for (const [locale, name, description] of [
@@ -280,7 +294,9 @@ export async function saveDishAction(_: DishFormState, formData: FormData): Prom
     ] as const) {
       if (!name) {
         // Sans traduction anglaise, le site affiche le français
-        await tx.delete(dishTranslations).where(and(eq(dishTranslations.dishId, dishId), eq(dishTranslations.locale, locale)));
+        await tx
+          .delete(dishTranslations)
+          .where(and(eq(dishTranslations.dishId, dishId), eq(dishTranslations.locale, locale)));
         continue;
       }
       await tx
@@ -317,7 +333,10 @@ export async function moveDish(id: number, direction: -1 | 1): Promise<void> {
   await db.transaction(async (tx) => {
     // Renumérotation propre puis échange
     for (const [i, s] of siblings.entries()) await tx.update(dishes).set({ position: i }).where(eq(dishes.id, s.id));
-    await tx.update(dishes).set({ position: index + direction }).where(eq(dishes.id, id));
+    await tx
+      .update(dishes)
+      .set({ position: index + direction })
+      .where(eq(dishes.id, id));
     await tx.update(dishes).set({ position: index }).where(eq(dishes.id, target.id));
   });
   refreshPublicSite();
@@ -349,7 +368,10 @@ export async function saveCategoryAction(_: CategoryFormState, formData: FormDat
     await db
       .insert(categoryTranslations)
       .values({ categoryId: c.id, locale, name, description })
-      .onConflictDoUpdate({ target: [categoryTranslations.categoryId, categoryTranslations.locale], set: { name, description } });
+      .onConflictDoUpdate({
+        target: [categoryTranslations.categoryId, categoryTranslations.locale],
+        set: { name, description },
+      });
   }
   refreshPublicSite();
   return { ok: true };

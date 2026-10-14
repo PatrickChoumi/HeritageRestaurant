@@ -37,7 +37,13 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
       action: footer('directions'),
       external: true,
     },
-    { Icon: Phone, label: t('phone'), value: restaurant.phone.display, href: `tel:${restaurant.phone.e164}`, action: footer('call') },
+    {
+      Icon: Phone,
+      label: t('phone'),
+      value: restaurant.phone.display,
+      href: `tel:${restaurant.phone.e164}`,
+      action: footer('call'),
+    },
     {
       Icon: WhatsApp,
       label: t('whatsapp'),
@@ -47,13 +53,27 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
       external: true,
     },
     ...(restaurant.publicEmail
-      ? [{ Icon: Mail, label: t('email'), value: restaurant.publicEmail, href: `mailto:${restaurant.publicEmail}`, action: t('email') }]
+      ? [
+          {
+            Icon: Mail,
+            label: t('email'),
+            value: restaurant.publicEmail,
+            href: `mailto:${restaurant.publicEmail}`,
+            action: t('email'),
+          },
+        ]
       : []),
   ];
 
   return (
     <>
-      <PageHero image={images['ambiance/lumieres']} alt="" kicker={t('kicker')} title={t.rich('title', rich)} intro={t('intro')} />
+      <PageHero
+        image={images['ambiance/lumieres']}
+        alt=""
+        kicker={t('kicker')}
+        title={t.rich('title', rich)}
+        intro={t('intro')}
+      />
 
       <section className="container-luxe py-24 md:py-32">
         <ul className="grid gap-px border border-gold/10 bg-gold/10 sm:grid-cols-2 lg:grid-cols-3">

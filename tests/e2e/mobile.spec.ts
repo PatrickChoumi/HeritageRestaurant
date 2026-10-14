@@ -5,7 +5,9 @@ for (const path of ['/', '/la-carte', '/reservation', '/le-restaurant', '/contac
   test(`mise en page mobile sans débordement : ${path}`, async ({ page }) => {
     await page.goto(path);
     await page.waitForLoadState('networkidle');
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
     expect(overflow).toBeLessThanOrEqual(0);
   });
 }

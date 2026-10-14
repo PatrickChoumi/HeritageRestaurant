@@ -41,11 +41,13 @@ export function ReservationActions({
   const [message, setMessage] = useState<string | null>(null);
 
   const run = (action: Action) => {
-    if (action.tone === 'danger' && !window.confirm(`${action.label} la réservation ${reservation.reference} ?`)) return;
+    if (action.tone === 'danger' && !window.confirm(`${action.label} la réservation ${reservation.reference} ?`))
+      return;
     startTransition(async () => {
       const result = await setReservationStatus(reservation.id, action.status, Boolean(action.notify && notify));
       if (!result.ok) setMessage('Action impossible, rechargez la page.');
-      else if (action.notify && notify) setMessage(result.emailed ? 'Client prévenu par e-mail.' : 'Statut enregistré, mais l’e-mail n’est pas parti.');
+      else if (action.notify && notify)
+        setMessage(result.emailed ? 'Client prévenu par e-mail.' : 'Statut enregistré, mais l’e-mail n’est pas parti.');
       else setMessage(null);
       router.refresh();
     });
@@ -75,10 +77,16 @@ export function ReservationActions({
           </button>
         ))}
         <a
-          href={clientWhatsappUrl(reservation, status === 'cancelled' ? 'cancel' : status === 'pending' ? 'confirm' : 'contact')}
+          href={clientWhatsappUrl(
+            reservation,
+            status === 'cancelled' ? 'cancel' : status === 'pending' ? 'confirm' : 'contact',
+          )}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn('grid shrink-0 place-items-center border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/10', compact ? 'size-8' : 'size-9')}
+          className={cn(
+            'grid shrink-0 place-items-center border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/10',
+            compact ? 'size-8' : 'size-9',
+          )}
           aria-label={`Écrire à ${reservation.firstName} sur WhatsApp`}
           title="WhatsApp"
         >
@@ -87,7 +95,12 @@ export function ReservationActions({
       </div>
       {needsNotify && !compact && (
         <label className="flex cursor-pointer items-center gap-2 text-xs text-mist">
-          <input type="checkbox" checked={notify} onChange={(e) => setNotify(e.target.checked)} className="accent-gold" />
+          <input
+            type="checkbox"
+            checked={notify}
+            onChange={(e) => setNotify(e.target.checked)}
+            className="accent-gold"
+          />
           Prévenir le client par e-mail
         </label>
       )}

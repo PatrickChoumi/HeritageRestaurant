@@ -31,9 +31,18 @@ export default async function AccountPage() {
           {[
             ['Base de données', usesEmbeddedDatabase() ? 'PGlite (base locale de démonstration)' : 'PostgreSQL'],
             ['E-mails', EMAIL_MODES[emailMode()]],
-            ['Alerte WhatsApp automatique', twilio ? 'Twilio activé' : 'Non configurée (lien WhatsApp pré-rempli uniquement)'],
-            ['Destinataire des alertes', process.env.RESTAURANT_EMAIL ?? 'restaurant@heritage.local (à définir : RESTAURANT_EMAIL)'],
-            ['Confirmation automatique', process.env.RESERVATION_AUTO_CONFIRM === 'true' ? 'Oui' : 'Non (confirmation par l’équipe)'],
+            [
+              'Alerte WhatsApp automatique',
+              twilio ? 'Twilio activé' : 'Non configurée (lien WhatsApp pré-rempli uniquement)',
+            ],
+            [
+              'Destinataire des alertes',
+              process.env.RESTAURANT_EMAIL ?? 'restaurant@heritage.local (à définir : RESTAURANT_EMAIL)',
+            ],
+            [
+              'Confirmation automatique',
+              process.env.RESERVATION_AUTO_CONFIRM === 'true' ? 'Oui' : 'Non (confirmation par l’équipe)',
+            ],
           ].map(([k, v]) => (
             <div key={k} className="grid gap-1 p-4 sm:grid-cols-[14rem_1fr]">
               <dt className="text-mist">{k}</dt>

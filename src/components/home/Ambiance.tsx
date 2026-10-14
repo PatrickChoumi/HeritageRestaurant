@@ -68,7 +68,7 @@ export function Ambiance() {
           intro={t('intro', { seats: restaurant.seats })}
         />
 
-        <ul className="mt-16 grid auto-rows-[9.5rem] grid-flow-dense grid-cols-2 gap-3 sm:auto-rows-[12rem] md:grid-cols-4 md:gap-4 lg:auto-rows-[13.5rem]">
+        <ul className="mt-16 grid grid-flow-dense auto-rows-[9.5rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] md:grid-cols-4 md:gap-4 lg:auto-rows-[13.5rem]">
           {GALLERY.map((item, i) => (
             <Reveal as="li" key={item.key} delay={(i % 3) * 0.1} className={cn('relative', item.className)}>
               <button
@@ -84,7 +84,11 @@ export function Ambiance() {
                   src={images[item.image]}
                   alt=""
                   fill
-                  sizes={item.className.includes('col-span-2') ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 25vw, 50vw'}
+                  sizes={
+                    item.className.includes('col-span-2')
+                      ? '(min-width: 768px) 50vw, 100vw'
+                      : '(min-width: 768px) 25vw, 50vw'
+                  }
                   placeholder="blur"
                   className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                 />

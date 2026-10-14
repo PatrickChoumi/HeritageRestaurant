@@ -23,7 +23,10 @@ export async function Signatures() {
     <section className="relative overflow-hidden border-t border-gold/10 bg-coal py-28 md:py-36">
       <div className="container-luxe flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <SectionHeading kicker={t('kicker')} title={t.rich('title', rich)} intro={t('intro')} />
-        <Link href="/la-carte" className="group inline-flex shrink-0 items-center gap-4 text-xs tracking-[0.25em] text-gold uppercase">
+        <Link
+          href="/la-carte"
+          className="group inline-flex shrink-0 items-center gap-4 text-xs tracking-[0.25em] text-gold uppercase"
+        >
           <span className="link-gold">{t('cta')}</span>
           <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-1.5" />
         </Link>

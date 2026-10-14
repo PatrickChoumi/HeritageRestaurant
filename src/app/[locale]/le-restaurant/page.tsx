@@ -36,7 +36,13 @@ export default async function RestaurantPage({ params }: PageProps<'/[locale]/le
 
   return (
     <>
-      <PageHero image={images['hero/salle']} alt={t('imageAlt.salle')} kicker={t('kicker')} title={t.rich('title', rich)} intro={t('intro')} />
+      <PageHero
+        image={images['hero/salle']}
+        alt={t('imageAlt.salle')}
+        kicker={t('kicker')}
+        title={t.rich('title', rich)}
+        intro={t('intro')}
+      />
 
       {/* Histoire */}
       <section className="container-luxe grid gap-16 py-28 md:py-36 lg:grid-cols-12">
@@ -61,7 +67,14 @@ export default async function RestaurantPage({ params }: PageProps<'/[locale]/le
 
       {/* Bandeau parallaxe */}
       <Parallax className="h-[60svh] min-h-80" strength={14}>
-        <Image src={images['hero/braise']} alt={t('imageAlt.braise')} fill sizes="100vw" placeholder="blur" className="object-cover" />
+        <Image
+          src={images['hero/braise']}
+          alt={t('imageAlt.braise')}
+          fill
+          sizes="100vw"
+          placeholder="blur"
+          className="object-cover"
+        />
       </Parallax>
 
       {/* Vision du Chef */}
@@ -69,7 +82,14 @@ export default async function RestaurantPage({ params }: PageProps<'/[locale]/le
         <div className="container-luxe grid items-center gap-16 lg:grid-cols-12">
           <Reveal className="gold-frame relative ml-6 lg:col-span-5">
             <div className="relative aspect-[4/5]">
-              <Image src={images['ambiance/dressage']} alt={t('imageAlt.chef')} fill sizes="(min-width: 1024px) 40vw, 90vw" placeholder="blur" className="object-cover" />
+              <Image
+                src={images['ambiance/dressage']}
+                alt={t('imageAlt.chef')}
+                fill
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                placeholder="blur"
+                className="object-cover"
+              />
             </div>
           </Reveal>
           <div className="lg:col-span-6 lg:col-start-7">
@@ -78,7 +98,9 @@ export default async function RestaurantPage({ params }: PageProps<'/[locale]/le
               <h2 className="title-lg mt-6">{t.rich('chef.title', rich)}</h2>
             </Reveal>
             <Reveal delay={0.1} as="figure" className="mt-10 border-l border-gold/50 pl-8">
-              <blockquote className="font-display text-2xl leading-relaxed text-ivory/95 italic md:text-[1.75rem]">“{t('chef.quote')}”</blockquote>
+              <blockquote className="font-display text-2xl leading-relaxed text-ivory/95 italic md:text-[1.75rem]">
+                “{t('chef.quote')}”
+              </blockquote>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="lead mt-8">{t('chef.p1')}</p>
@@ -98,13 +120,34 @@ export default async function RestaurantPage({ params }: PageProps<'/[locale]/le
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             <Reveal className="img-frame relative aspect-[4/5] sm:row-span-2 sm:aspect-auto">
-              <Image src={images['ambiance/panneaux']} alt="" fill sizes="(min-width: 1024px) 28vw, 50vw" placeholder="blur" className="object-cover" />
+              <Image
+                src={images['ambiance/panneaux']}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 28vw, 50vw"
+                placeholder="blur"
+                className="object-cover"
+              />
             </Reveal>
             <Reveal delay={0.1} className="img-frame relative aspect-[4/3]">
-              <Image src={images['ambiance/table']} alt="" fill sizes="(min-width: 1024px) 28vw, 50vw" placeholder="blur" className="object-cover" />
+              <Image
+                src={images['ambiance/table']}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 28vw, 50vw"
+                placeholder="blur"
+                className="object-cover"
+              />
             </Reveal>
             <Reveal delay={0.2} className="img-frame relative aspect-[4/3]">
-              <Image src={images['ambiance/lumieres']} alt="" fill sizes="(min-width: 1024px) 28vw, 50vw" placeholder="blur" className="object-cover" />
+              <Image
+                src={images['ambiance/lumieres']}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 28vw, 50vw"
+                placeholder="blur"
+                className="object-cover"
+              />
             </Reveal>
           </div>
         </div>

@@ -28,7 +28,9 @@ export async function createSession(userId: number): Promise<void> {
   // Ménage des sessions expirées
   await db
     .delete(adminSessions)
-    .where(or(lt(adminSessions.expiresAt, new Date(now)), lt(adminSessions.lastSeenAt, new Date(now - SESSION_IDLE_MS))));
+    .where(
+      or(lt(adminSessions.expiresAt, new Date(now)), lt(adminSessions.lastSeenAt, new Date(now - SESSION_IDLE_MS))),
+    );
 
   (await cookies()).set(ADMIN_COOKIE, token, {
     httpOnly: true,
@@ -65,7 +67,10 @@ export async function getSession(): Promise<AdminSession | null> {
     );
   if (!row) return null;
   if (now - row.lastSeenAt.getTime() > 5 * 60 * 1000) {
-    await db.update(adminSessions).set({ lastSeenAt: new Date(now) }).where(eq(adminSessions.idHash, row.idHash));
+    await db
+      .update(adminSessions)
+      .set({ lastSeenAt: new Date(now) })
+      .where(eq(adminSessions.idHash, row.idHash));
   }
   return { idHash: row.idHash, user: { id: row.id, email: row.email, name: row.name } };
 }

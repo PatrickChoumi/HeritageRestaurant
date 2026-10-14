@@ -2,7 +2,11 @@ import type { MetadataRoute } from 'next';
 import { routing, type AppPathname } from '@/i18n/routing';
 import { absoluteUrl } from '@/lib/seo';
 
-const PAGES: { href: AppPathname; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
+const PAGES: {
+  href: AppPathname;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'];
+}[] = [
   { href: '/', priority: 1, changeFrequency: 'weekly' },
   { href: '/la-carte', priority: 0.9, changeFrequency: 'weekly' },
   { href: '/reservation', priority: 0.9, changeFrequency: 'monthly' },

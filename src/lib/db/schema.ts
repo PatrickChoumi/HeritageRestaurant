@@ -73,9 +73,15 @@ export const dishes = pgTable(
     /** Clé d'une image de la bibliothèque (src/lib/images.ts), ex. « plats/ndole ». */
     image: varchar('image', { length: 200 }),
     /** Codes des 14 allergènes réglementaires (voir src/lib/menu-codes.ts). */
-    allergens: text('allergens').array().notNull().default(sql`'{}'::text[]`),
+    allergens: text('allergens')
+      .array()
+      .notNull()
+      .default(sql`'{}'::text[]`),
     /** Spécificités : vegetarian, vegan, spicy, alcohol-free, to-share… */
-    tags: text('tags').array().notNull().default(sql`'{}'::text[]`),
+    tags: text('tags')
+      .array()
+      .notNull()
+      .default(sql`'{}'::text[]`),
     isSignature: boolean('is_signature').notNull().default(false),
     isAvailable: boolean('is_available').notNull().default(true),
     position: integer('position').notNull().default(0),

@@ -6,11 +6,7 @@ import { and, eq, gt, isNull, lt, or, sql } from 'drizzle-orm';
 import { getDb } from '@/lib/db/client';
 import { reservations } from '@/lib/db/schema';
 import { restaurantInbox, sendEmail } from '@/lib/email/send';
-import {
-  clientReservationEmail,
-  restaurantReservationEmail,
-  type ReservationEmailData,
-} from '@/lib/email/templates';
+import { clientReservationEmail, restaurantReservationEmail, type ReservationEmailData } from '@/lib/email/templates';
 import { formatDateLong, formatTime } from '@/lib/format';
 import { formatPhone } from './validation';
 import type { Reservation } from './service';
@@ -46,7 +42,11 @@ export async function notifyNewReservation(r: Reservation): Promise<void> {
 
   if (!r.clientEmailSentAt) {
     try {
-      await sendEmail({ to: r.email, replyTo: restaurantInbox(), ...clientReservationEmail(r.status === 'confirmed' ? 'confirmed' : 'received', data) });
+      await sendEmail({
+        to: r.email,
+        replyTo: restaurantInbox(),
+        ...clientReservationEmail(r.status === 'confirmed' ? 'confirmed' : 'received', data),
+      });
       update.clientEmailSentAt = new Date();
     } catch (e) {
       errors.push(`client: ${errorMessage(e)}`);
@@ -108,9 +108,9 @@ export async function retryPendingNotifications(limit = 20): Promise<number> {
 function twilioConfigured(): boolean {
   return Boolean(
     process.env.TWILIO_ACCOUNT_SID &&
-      process.env.TWILIO_AUTH_TOKEN &&
-      process.env.TWILIO_WHATSAPP_FROM &&
-      process.env.TWILIO_WHATSAPP_TO,
+    process.env.TWILIO_AUTH_TOKEN &&
+    process.env.TWILIO_WHATSAPP_FROM &&
+    process.env.TWILIO_WHATSAPP_TO,
   );
 }
 

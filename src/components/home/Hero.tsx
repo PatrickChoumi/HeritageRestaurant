@@ -88,7 +88,10 @@ export function Hero() {
       </motion.div>
 
       {/* Voiles sombres pour la lisibilité */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(13_13_13/0.2),rgb(13_13_13/0.82))]" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(13_13_13/0.2),rgb(13_13_13/0.82))]"
+        aria-hidden="true"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink" aria-hidden="true" />
 
       <motion.div
@@ -97,13 +100,16 @@ export function Hero() {
       >
         <p className={cn('kicker justify-center [--d:0.1s]', INTRO)}>{t('kicker')}</p>
         <div
-          className={cn('mt-8 grid min-h-[8.5rem] place-items-center sm:min-h-[10rem] md:min-h-[12rem] [--d:0.2s]', INTRO)}
+          className={cn(
+            'mt-8 grid min-h-[8.5rem] place-items-center [--d:0.2s] sm:min-h-[10rem] md:min-h-[12rem]',
+            INTRO,
+          )}
           aria-live={running ? 'off' : 'polite'}
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.h1
               key={slide.key}
-              className="title-xl mx-auto max-w-5xl text-shadow-soft"
+              className="title-xl text-shadow-soft mx-auto max-w-5xl"
               initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
@@ -114,7 +120,12 @@ export function Hero() {
           </AnimatePresence>
         </div>
         <p className={cn('lead mx-auto mt-4 max-w-xl text-ivory/85 [--d:0.35s]', INTRO)}>{t('lead')}</p>
-        <div className={cn('mt-10 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row [--d:0.5s]', INTRO)}>
+        <div
+          className={cn(
+            'mt-10 flex w-full flex-col items-center justify-center gap-4 [--d:0.5s] sm:w-auto sm:flex-row',
+            INTRO,
+          )}
+        >
           <Link href="/reservation" className="btn btn-gold w-full sm:w-auto sm:min-w-60">
             {t('ctaBook')}
           </Link>
@@ -125,7 +136,7 @@ export function Hero() {
       </motion.div>
 
       {/* Indicateurs et contrôle du diaporama */}
-      <div className="absolute inset-x-0 bottom-6 z-10 container-luxe flex items-end justify-between md:bottom-8">
+      <div className="container-luxe absolute inset-x-0 bottom-6 z-10 flex items-end justify-between md:bottom-8">
         <div className="flex items-center gap-2">
           {SLIDES.map((s, i) => (
             <button

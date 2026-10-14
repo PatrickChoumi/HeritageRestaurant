@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { cleanMultiline, cleanText, contactSchema, fieldErrors, formatPhone, normalizePhone, reservationSchema } from '@/lib/reservations/validation';
+import {
+  cleanMultiline,
+  cleanText,
+  contactSchema,
+  fieldErrors,
+  formatPhone,
+  normalizePhone,
+  reservationSchema,
+} from '@/lib/reservations/validation';
 
 const valid = {
   date: '2026-10-20',
@@ -38,7 +46,11 @@ describe('téléphone', () => {
 
 describe('formulaire de réservation', () => {
   it('nettoie et normalise une saisie correcte', () => {
-    const result = reservationSchema.safeParse({ ...valid, firstName: '  Aïcha\n\u0007 ', requests: 'Table\r\n\r\n\r\ncalme   svp' });
+    const result = reservationSchema.safeParse({
+      ...valid,
+      firstName: '  Aïcha\n\u0007 ',
+      requests: 'Table\r\n\r\n\r\ncalme   svp',
+    });
     expect(result.success).toBe(true);
     expect(result.data).toMatchObject({
       guests: 4,
@@ -50,7 +62,14 @@ describe('formulaire de réservation', () => {
   });
 
   it('renvoie un code d’erreur par champ', () => {
-    const result = reservationSchema.safeParse({ ...valid, email: 'pas-un-email', phone: '', firstName: '123', guests: 40, consent: false });
+    const result = reservationSchema.safeParse({
+      ...valid,
+      email: 'pas-un-email',
+      phone: '',
+      firstName: '123',
+      guests: 40,
+      consent: false,
+    });
     expect(result.success).toBe(false);
     expect(fieldErrors(result.error!)).toMatchObject({
       email: 'invalid',
@@ -79,7 +98,12 @@ describe('formulaire de réservation', () => {
 
 describe('formulaire de contact', () => {
   it('accepte un message sans téléphone', () => {
-    const r = contactSchema.safeParse({ name: 'Paul', email: 'p@example.com', message: 'Bonjour, une question sur les groupes.', locale: 'en' });
+    const r = contactSchema.safeParse({
+      name: 'Paul',
+      email: 'p@example.com',
+      message: 'Bonjour, une question sur les groupes.',
+      locale: 'en',
+    });
     expect(r.success).toBe(true);
     expect(r.data?.phone).toBeUndefined();
   });

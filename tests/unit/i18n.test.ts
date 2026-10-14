@@ -33,7 +33,8 @@ describe('traductions', () => {
         if (el.type === TYPE.literal || el.type === TYPE.pound) continue;
         out.add(el.type === TYPE.tag ? `<${el.value}>` : el.value);
         if (el.type === TYPE.tag) collect(el.children, out);
-        if (el.type === TYPE.select || el.type === TYPE.plural) for (const option of Object.values(el.options)) collect(option.value, out);
+        if (el.type === TYPE.select || el.type === TYPE.plural)
+          for (const option of Object.values(el.options)) collect(option.value, out);
       }
       return out;
     };
@@ -42,14 +43,37 @@ describe('traductions', () => {
   });
 
   it('chaque message ICU se formate sans erreur', () => {
-    const values = { count: 2, max: 10, days: 60, minutes: 60, name: 'Aïcha', email: 'a@b.c', date: 'samedi', time: '20h', reference: 'HER-ABC234', guests: 3, phone: '+237', seats: 64, index: 1, current: 1, total: 3, caption: 'x', year: 2026, day: 'lundi', service: 'dinner' };
-    for (const [locale, messages] of [['fr', fr], ['en', en]] as const) {
+    const values = {
+      count: 2,
+      max: 10,
+      days: 60,
+      minutes: 60,
+      name: 'Aïcha',
+      email: 'a@b.c',
+      date: 'samedi',
+      time: '20h',
+      reference: 'HER-ABC234',
+      guests: 3,
+      phone: '+237',
+      seats: 64,
+      index: 1,
+      current: 1,
+      total: 3,
+      caption: 'x',
+      year: 2026,
+      day: 'lundi',
+      service: 'dinner',
+    };
+    for (const [locale, messages] of [
+      ['fr', fr],
+      ['en', en],
+    ] as const) {
       const errors: string[] = [];
       const t = createTranslator({ locale, messages, onError: (e) => errors.push(e.message) });
       for (const key of Object.keys(locale === 'fr' ? frKeys : enKeys)) {
-        const tags = { br: () => '', em: (c: unknown) => c, link: (c: unknown) => c };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (t as any).markup ? (t as any).markup(key, { ...values, ...tags }) : (t as any)(key, values);
+        const tags = { br: () => '', em: (c: string) => c, link: (c: string) => c };
+        // t.markup accepte les balises (<br>, <em>, <link>) et renvoie une chaîne
+        (t as unknown as { markup: (key: string, values: object) => string }).markup(key, { ...values, ...tags });
       }
       expect(errors, locale).toEqual([]);
     }

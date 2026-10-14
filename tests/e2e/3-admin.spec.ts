@@ -45,7 +45,11 @@ test.describe('administration', () => {
     const soya = page.getByRole('listitem').filter({ hasText: 'Soya de bœuf au yaji' });
     await expect(soya.getByText('Épuisé aujourd’hui')).toBeVisible();
     await page.goto('/admin/carte');
-    await page.getByRole('listitem').filter({ hasText: 'Soya de bœuf au yaji' }).getByRole('button', { name: /Épuisé/ }).click();
+    await page
+      .getByRole('listitem')
+      .filter({ hasText: 'Soya de bœuf au yaji' })
+      .getByRole('button', { name: /Épuisé/ })
+      .click();
 
     // Le message de contact est arrivé
     await page.goto('/admin/messages');

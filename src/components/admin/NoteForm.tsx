@@ -33,7 +33,11 @@ export function NoteForm({ id, initial }: { id: number; initial: string }) {
         className="field resize-y text-sm"
       />
       <div className="mt-2 flex items-center gap-3">
-        <button type="submit" disabled={pending} className="min-h-9 cursor-pointer border border-ivory/20 px-3 text-xs hover:border-gold hover:text-gold disabled:opacity-50">
+        <button
+          type="submit"
+          disabled={pending}
+          className="min-h-9 cursor-pointer border border-ivory/20 px-3 text-xs hover:border-gold hover:text-gold disabled:opacity-50"
+        >
           {pending ? 'Enregistrement…' : 'Enregistrer la note'}
         </button>
         {saved && <span className="text-xs text-success">Enregistrée ✓</span>}

@@ -32,7 +32,9 @@ export function OpenStatus({ className }: { className?: string }) {
   return (
     <span role="status" className={cn('inline-flex items-center gap-2.5 text-xs tracking-wide', className)}>
       <span className="relative flex size-2" aria-hidden="true">
-        {status.open && <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-60" />}
+        {status.open && (
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-60" />
+        )}
         <span className={cn('relative inline-flex size-2 rounded-full', status.open ? 'bg-success' : 'bg-danger')} />
       </span>
       {label}

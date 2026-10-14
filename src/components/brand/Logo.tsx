@@ -30,7 +30,9 @@ export function Logo({ className, compact = false }: { className?: string; compa
       <span className="flex flex-col leading-none">
         <span className="font-logo text-[1.15rem] font-medium tracking-[0.34em] md:text-[1.3rem]">HÉRITAGE</span>
         {!compact && (
-          <span className="mt-1.5 font-sans text-[0.55rem] tracking-[0.42em] text-mist uppercase">Bastos · Yaoundé</span>
+          <span className="mt-1.5 font-sans text-[0.55rem] tracking-[0.42em] text-mist uppercase">
+            Bastos · Yaoundé
+          </span>
         )}
       </span>
     </span>

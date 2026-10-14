@@ -39,5 +39,9 @@ if (existing) {
   await db.insert(adminUsers).values({ email, name: name ?? 'Administrateur', passwordHash });
   console.info(`✓ Compte créé : ${email}`);
 }
-console.info(provided ? '  Mot de passe : celui de ADMIN_PASSWORD' : `  Mot de passe : ${password}\n  (affiché une seule fois : notez-le)`);
+console.info(
+  provided
+    ? '  Mot de passe : celui de ADMIN_PASSWORD'
+    : `  Mot de passe : ${password}\n  (affiché une seule fois : notez-le)`,
+);
 process.exit(0);

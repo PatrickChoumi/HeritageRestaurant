@@ -23,7 +23,15 @@ export function PasswordForm() {
           <label htmlFor={f.name} className="label">
             {f.label}
           </label>
-          <input id={f.name} name={f.name} type="password" required autoComplete={f.autoComplete} minLength={f.name === 'current' ? undefined : 12} className="field" />
+          <input
+            id={f.name}
+            name={f.name}
+            type="password"
+            required
+            autoComplete={f.autoComplete}
+            minLength={f.name === 'current' ? undefined : 12}
+            className="field"
+          />
         </div>
       ))}
       {state.error && (

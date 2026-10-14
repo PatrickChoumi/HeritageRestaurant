@@ -3,7 +3,9 @@ import { defineConfig, devices } from '@playwright/test';
 // Tests de bout en bout sur le build de production : `npm run build` puis `npm run test:e2e`.
 // Sans DATABASE_URL, une base PGlite neuve est créée dans .data/e2e à chaque lancement.
 const PORT = Number(process.env.E2E_PORT ?? 3200);
-const freshDb = process.env.DATABASE_URL ? '' : `node -e "require('fs').rmSync('.data/e2e',{recursive:true,force:true})" && `;
+const freshDb = process.env.DATABASE_URL
+  ? ''
+  : `node -e "require('fs').rmSync('.data/e2e',{recursive:true,force:true})" && `;
 
 export default defineConfig({
   testDir: 'tests/e2e',

@@ -94,7 +94,10 @@ describe('réservations', () => {
 
   it('applique les règles métier côté serveur, quelle que soit la requête', async () => {
     expect(await createReservation(booking({ time: '16:00' }))).toEqual({ ok: false, error: 'slotInvalid' });
-    expect(await createReservation(booking({ date: addDays(restaurantNow().date, -1) }))).toEqual({ ok: false, error: 'datePast' });
+    expect(await createReservation(booking({ date: addDays(restaurantNow().date, -1) }))).toEqual({
+      ok: false,
+      error: 'datePast',
+    });
   });
 });
 
@@ -110,7 +113,9 @@ describe('carte bilingue', () => {
   it('se replie sur le français quand une traduction anglaise manque', async () => {
     const db = await getDb();
     const [dish] = await db.select().from(dishes).where(eq(dishes.slug, 'eru-water-fufu'));
-    await db.delete(dishTranslations).where(sql`${dishTranslations.dishId} = ${dish!.id} and ${dishTranslations.locale} = 'en'`);
+    await db
+      .delete(dishTranslations)
+      .where(sql`${dishTranslations.dishId} = ${dish!.id} and ${dishTranslations.locale} = 'en'`);
     const en = await getMenu('en');
     expect(en.flatMap((c) => c.dishes).find((d) => d.slug === 'eru-water-fufu')!.name).toBe('Eru & water fufu');
   });

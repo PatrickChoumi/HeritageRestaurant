@@ -8,13 +8,27 @@ import { Check } from '@/components/icons';
 import { cn } from '@/lib/cn';
 
 const SUBJECTS = ['info', 'group', 'event', 'press', 'other'] as const;
-type Values = { name: string; email: string; phone: string; subject: (typeof SUBJECTS)[number]; message: string; website: string };
+type Values = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: (typeof SUBJECTS)[number];
+  message: string;
+  website: string;
+};
 
 export function ContactForm() {
   const t = useTranslations('Contact.form');
   const locale = useLocale();
   const uid = useId();
-  const [values, setValues] = useState<Values>({ name: '', email: '', phone: '', subject: 'info', message: '', website: '' });
+  const [values, setValues] = useState<Values>({
+    name: '',
+    email: '',
+    phone: '',
+    subject: 'info',
+    message: '',
+    website: '',
+  });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [failure, setFailure] = useState<'rateLimited' | 'server' | null>(null);
   const [sent, setSent] = useState(false);
@@ -54,13 +68,21 @@ export function ContactForm() {
   const message = (key: string) => {
     const code = errors[key];
     if (!code) return undefined;
-    return t(`errors.${(['required', 'invalid', 'tooShort', 'tooLong'] as const).find((c) => c === code) ?? 'invalid'}`);
+    return t(
+      `errors.${(['required', 'invalid', 'tooShort', 'tooLong'] as const).find((c) => c === code) ?? 'invalid'}`,
+    );
   };
 
   return (
     <AnimatePresence mode="wait" initial={false}>
       {sent ? (
-        <motion.div key="sent" role="status" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="flex items-start gap-4 border border-gold/30 bg-gold/[0.05] p-6">
+        <motion.div
+          key="sent"
+          role="status"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-start gap-4 border border-gold/30 bg-gold/[0.05] p-6"
+        >
           <span className="grid size-10 shrink-0 place-items-center rounded-full bg-gold text-ink">
             <Check size={18} strokeWidth={2.2} />
           </span>
@@ -97,7 +119,12 @@ export function ContactForm() {
             <label htmlFor={`${uid}-subject`} className="label">
               {t('subject')}
             </label>
-            <select id={`${uid}-subject`} value={values.subject} onChange={(e) => set('subject', e.target.value as Values['subject'])} className="field cursor-pointer bg-coal">
+            <select
+              id={`${uid}-subject`}
+              value={values.subject}
+              onChange={(e) => set('subject', e.target.value as Values['subject'])}
+              className="field cursor-pointer bg-coal"
+            >
               {SUBJECTS.map((s) => (
                 <option key={s} value={s}>
                   {t(`subjects.${s}`)}
@@ -127,7 +154,12 @@ export function ContactForm() {
             )}
           </div>
           <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
-            <input tabIndex={-1} autoComplete="off" value={values.website} onChange={(e) => set('website', e.target.value)} />
+            <input
+              tabIndex={-1}
+              autoComplete="off"
+              value={values.website}
+              onChange={(e) => set('website', e.target.value)}
+            />
           </div>
           {failure && (
             <p role="alert" className="border-l-2 border-danger bg-danger/10 px-4 py-3 text-sm">

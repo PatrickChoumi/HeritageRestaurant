@@ -15,8 +15,14 @@ export async function bootstrapLocalAdmin(db: Db): Promise<void> {
   await db.insert(adminUsers).values({ email, name: 'Administrateur', passwordHash: await hashPassword(password) });
 
   const line = '─'.repeat(58);
-  console.info(`\n${line}\n  Administration Héritage : compte de démonstration créé\n  Adresse      : /admin\n  Identifiant  : ${email}`);
-  console.info(provided ? '  Mot de passe : celui de ADMIN_PASSWORD' : `  Mot de passe : ${password}\n  (affiché une seule fois : notez-le)`);
+  console.info(
+    `\n${line}\n  Administration Héritage : compte de démonstration créé\n  Adresse      : /admin\n  Identifiant  : ${email}`,
+  );
+  console.info(
+    provided
+      ? '  Mot de passe : celui de ADMIN_PASSWORD'
+      : `  Mot de passe : ${password}\n  (affiché une seule fois : notez-le)`,
+  );
   console.info(`${line}\n`);
 }
 

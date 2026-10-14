@@ -16,18 +16,36 @@ export function CategoryForm({ category }: { category: Pick<AdminCategory, 'id' 
             <label className="label" htmlFor={`c${category.id}-name-${l}`}>
               Nom
             </label>
-            <input id={`c${category.id}-name-${l}`} name={l === 'fr' ? 'nameFr' : 'nameEn'} defaultValue={category[l].name} required maxLength={80} className="field text-sm" />
+            <input
+              id={`c${category.id}-name-${l}`}
+              name={l === 'fr' ? 'nameFr' : 'nameEn'}
+              defaultValue={category[l].name}
+              required
+              maxLength={80}
+              className="field text-sm"
+            />
           </div>
           <div>
             <label className="label" htmlFor={`c${category.id}-desc-${l}`}>
               Description
             </label>
-            <textarea id={`c${category.id}-desc-${l}`} name={l === 'fr' ? 'descriptionFr' : 'descriptionEn'} defaultValue={category[l].description} rows={2} maxLength={300} className="field resize-y text-sm" />
+            <textarea
+              id={`c${category.id}-desc-${l}`}
+              name={l === 'fr' ? 'descriptionFr' : 'descriptionEn'}
+              defaultValue={category[l].description}
+              rows={2}
+              maxLength={300}
+              className="field resize-y text-sm"
+            />
           </div>
         </fieldset>
       ))}
       <div className="flex items-center gap-3 md:col-span-2">
-        <button type="submit" disabled={pending} className="min-h-9 cursor-pointer border border-gold/60 px-4 text-xs text-gold hover:bg-gold hover:text-ink disabled:opacity-50">
+        <button
+          type="submit"
+          disabled={pending}
+          className="min-h-9 cursor-pointer border border-gold/60 px-4 text-xs text-gold hover:bg-gold hover:text-ink disabled:opacity-50"
+        >
           {pending ? 'Enregistrement…' : 'Enregistrer la catégorie'}
         </button>
         {state.ok && <span className="text-xs text-success">Enregistrée ✓</span>}

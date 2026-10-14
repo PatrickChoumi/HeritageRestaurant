@@ -36,7 +36,9 @@ const OCCASIONS: Record<string, string> = {
 };
 
 const dateTime = (d: Date | null) =>
-  d ? new Intl.DateTimeFormat('fr-FR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'Africa/Douala' }).format(d) : '—';
+  d
+    ? new Intl.DateTimeFormat('fr-FR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'Africa/Douala' }).format(d)
+    : '—';
 
 export default async function ReservationsPage({ searchParams }: PageProps<'/admin/reservations'>) {
   await requireAdmin();
@@ -44,7 +46,9 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
   const str = (v: string | string[] | undefined) => (typeof v === 'string' ? v : undefined);
   const range = (RANGES.find((r) => r.key === str(params.range))?.key ?? 'upcoming') as ReservationRange;
   const statusParam = str(params.status);
-  const status = (reservationStatusEnum.enumValues as string[]).includes(statusParam ?? '') ? (statusParam as ReservationStatus) : undefined;
+  const status = (reservationStatusEnum.enumValues as string[]).includes(statusParam ?? '')
+    ? (statusParam as ReservationStatus)
+    : undefined;
   const q = str(params.q)?.slice(0, 80);
   const selectedId = Number(str(params.id));
 
@@ -60,7 +64,9 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
     return `/admin/reservations?${next.toString()}`;
   };
 
-  const covers = rows.filter((r) => r.status === 'pending' || r.status === 'confirmed').reduce((s, r) => s + r.guests, 0);
+  const covers = rows
+    .filter((r) => r.status === 'pending' || r.status === 'confirmed')
+    .reduce((s, r) => s + r.guests, 0);
 
   return (
     <div className="mx-auto max-w-7xl">
@@ -94,7 +100,12 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
         <label className="sr-only" htmlFor="status">
           Statut
         </label>
-        <select id="status" name="status" defaultValue={status ?? ''} className="min-h-9 border border-ivory/15 bg-coal px-3 text-xs">
+        <select
+          id="status"
+          name="status"
+          defaultValue={status ?? ''}
+          className="min-h-9 border border-ivory/15 bg-coal px-3 text-xs"
+        >
           <option value="">Tous les statuts</option>
           {reservationStatusEnum.enumValues.map((s) => (
             <option key={s} value={s}>
@@ -112,7 +123,10 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
           placeholder="Nom, téléphone, e-mail, référence…"
           className="min-h-9 min-w-56 flex-1 border border-ivory/15 bg-coal px-3 text-xs placeholder:text-mist"
         />
-        <button type="submit" className="min-h-9 cursor-pointer border border-gold/60 px-4 text-xs text-gold hover:bg-gold hover:text-ink">
+        <button
+          type="submit"
+          className="min-h-9 cursor-pointer border border-gold/60 px-4 text-xs text-gold hover:bg-gold hover:text-ink"
+        >
           Filtrer
         </button>
       </form>
@@ -121,7 +135,9 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
         {/* Liste */}
         <div className="min-w-0">
           {rows.length === 0 ? (
-            <p className="border border-dashed border-ivory/15 p-10 text-center text-sm text-mist">Aucune réservation pour ces critères.</p>
+            <p className="border border-dashed border-ivory/15 p-10 text-center text-sm text-mist">
+              Aucune réservation pour ces critères.
+            </p>
           ) : (
             <table className="w-full border-collapse text-sm">
               <thead className="hidden text-left text-xs text-mist md:table-header-group">
@@ -168,13 +184,20 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
 
         {/* Fiche détaillée */}
         {selected && (
-          <aside aria-label={`Réservation ${selected.reference}`} className="self-start border border-gold/25 bg-coal xl:sticky xl:top-6">
+          <aside
+            aria-label={`Réservation ${selected.reference}`}
+            className="self-start border border-gold/25 bg-coal xl:sticky xl:top-6"
+          >
             <div className="flex items-start justify-between gap-4 border-b border-ivory/10 p-5">
               <div>
                 <p className="font-logo text-lg tracking-[0.14em] text-gold">{selected.reference}</p>
                 <p className="mt-1 text-xs text-mist">Reçue le {dateTime(selected.createdAt)}</p>
               </div>
-              <Link href={link({ id: undefined })} className="grid size-9 place-items-center border border-ivory/15 text-mist hover:text-ivory" aria-label="Fermer la fiche">
+              <Link
+                href={link({ id: undefined })}
+                className="grid size-9 place-items-center border border-ivory/15 text-mist hover:text-ivory"
+                aria-label="Fermer la fiche"
+              >
                 <Close size={16} />
               </Link>
             </div>
@@ -197,17 +220,27 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
                 <a href={`tel:${selected.phone}`} className="flex items-center gap-2 text-ivory/85 hover:text-gold">
                   <Phone size={15} className="text-gold" /> {formatPhone(selected.phone)}
                 </a>
-                <a href={clientWhatsappUrl(selected, 'contact')} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-ivory/85 hover:text-gold">
+                <a
+                  href={clientWhatsappUrl(selected, 'contact')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-ivory/85 hover:text-gold"
+                >
                   <WhatsApp size={15} className="text-[#25D366]" /> WhatsApp
                 </a>
-                <a href={`mailto:${selected.email}?subject=${encodeURIComponent(`Votre réservation ${selected.reference}`)}`} className="flex items-center gap-2 break-all text-ivory/85 hover:text-gold">
+                <a
+                  href={`mailto:${selected.email}?subject=${encodeURIComponent(`Votre réservation ${selected.reference}`)}`}
+                  className="flex items-center gap-2 break-all text-ivory/85 hover:text-gold"
+                >
                   <Mail size={15} className="shrink-0 text-gold" /> {selected.email}
                 </a>
               </div>
 
               {(selected.occasion || selected.requests) && (
                 <div className="border-l-2 border-gold/50 pl-4 text-sm">
-                  {selected.occasion && <p className="text-gold">{OCCASIONS[selected.occasion] ?? selected.occasion}</p>}
+                  {selected.occasion && (
+                    <p className="text-gold">{OCCASIONS[selected.occasion] ?? selected.occasion}</p>
+                  )}
                   {selected.requests && <p className="mt-1 whitespace-pre-line text-ivory/85">{selected.requests}</p>}
                 </div>
               )}
@@ -219,10 +252,22 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
               <div className="space-y-3 border-t border-ivory/10 pt-5 text-xs text-mist">
                 <p className="label">Notifications</p>
                 <ul className="space-y-1">
-                  <li>E-mail au client : {selected.clientEmailSentAt ? `envoyé le ${dateTime(selected.clientEmailSentAt)}` : 'non envoyé'}</li>
-                  <li>Alerte au restaurant : {selected.restaurantEmailSentAt ? `envoyée le ${dateTime(selected.restaurantEmailSentAt)}` : 'non envoyée'}</li>
-                  {selected.whatsappNotifiedAt && <li>WhatsApp (Twilio) : envoyé le {dateTime(selected.whatsappNotifiedAt)}</li>}
-                  {selected.lastEmailError && <li className="text-danger">Dernière erreur : {selected.lastEmailError}</li>}
+                  <li>
+                    E-mail au client :{' '}
+                    {selected.clientEmailSentAt ? `envoyé le ${dateTime(selected.clientEmailSentAt)}` : 'non envoyé'}
+                  </li>
+                  <li>
+                    Alerte au restaurant :{' '}
+                    {selected.restaurantEmailSentAt
+                      ? `envoyée le ${dateTime(selected.restaurantEmailSentAt)}`
+                      : 'non envoyée'}
+                  </li>
+                  {selected.whatsappNotifiedAt && (
+                    <li>WhatsApp (Twilio) : envoyé le {dateTime(selected.whatsappNotifiedAt)}</li>
+                  )}
+                  {selected.lastEmailError && (
+                    <li className="text-danger">Dernière erreur : {selected.lastEmailError}</li>
+                  )}
                 </ul>
                 <ResendButton id={selected.id} />
               </div>
@@ -232,7 +277,16 @@ export default async function ReservationsPage({ searchParams }: PageProps<'/adm
                 <iframe
                   title="Aperçu de l’e-mail"
                   sandbox=""
-                  srcDoc={clientReservationEmail(selected.status === 'confirmed' ? 'confirmed' : selected.status === 'cancelled' ? 'cancelled' : 'received', toEmailData(selected)).html}
+                  srcDoc={
+                    clientReservationEmail(
+                      selected.status === 'confirmed'
+                        ? 'confirmed'
+                        : selected.status === 'cancelled'
+                          ? 'cancelled'
+                          : 'received',
+                      toEmailData(selected),
+                    ).html
+                  }
                   className="mt-4 h-[36rem] w-full border border-ivory/10 bg-ink"
                 />
               </details>

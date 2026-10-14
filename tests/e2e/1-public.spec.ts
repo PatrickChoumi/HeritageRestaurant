@@ -52,7 +52,10 @@ test.describe('site public', () => {
     await expect(panel.getByRole('heading', { name: 'Ndolé aux crevettes' })).toBeVisible();
     await expect(panel.getByText('Épuisé aujourd’hui')).toBeVisible();
 
-    await page.getByRole('button', { name: /Allergènes à éviter/ }).first().click();
+    await page
+      .getByRole('button', { name: /Allergènes à éviter/ })
+      .first()
+      .click();
     await page.getByRole('button', { name: 'Arachides', exact: true }).click();
     await expect(panel.getByRole('heading', { name: 'Ndolé aux crevettes' })).toBeHidden();
     await expect(page.getByText(/plats? masqués? par vos filtres/)).toBeVisible();

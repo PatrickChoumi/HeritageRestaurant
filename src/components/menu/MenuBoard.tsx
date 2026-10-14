@@ -47,9 +47,12 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   // Onglet initial depuis l'ancre (#plats) pour les liens partagés
-  const hash = useSyncExternalStore(subscribeToHash, () => window.location.hash.slice(1), () => '');
-  const active =
-    selected ?? (categories.some((c) => c.slug === hash) ? hash : (categories[0]?.slug ?? ''));
+  const hash = useSyncExternalStore(
+    subscribeToHash,
+    () => window.location.hash.slice(1),
+    () => '',
+  );
+  const active = selected ?? (categories.some((c) => c.slug === hash) ? hash : (categories[0]?.slug ?? ''));
 
   const select = (slug: string, focus = false) => {
     setSelected(slug);
@@ -60,11 +63,19 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
   const onTabKey = (event: React.KeyboardEvent, index: number) => {
     const last = categories.length - 1;
     const target =
-      event.key === 'ArrowRight' ? (index === last ? 0 : index + 1)
-      : event.key === 'ArrowLeft' ? (index === 0 ? last : index - 1)
-      : event.key === 'Home' ? 0
-      : event.key === 'End' ? last
-      : null;
+      event.key === 'ArrowRight'
+        ? index === last
+          ? 0
+          : index + 1
+        : event.key === 'ArrowLeft'
+          ? index === 0
+            ? last
+            : index - 1
+          : event.key === 'Home'
+            ? 0
+            : event.key === 'End'
+              ? last
+              : null;
     if (target === null) return;
     event.preventDefault();
     select(categories[target]!.slug, true);
@@ -82,9 +93,13 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
   return (
     <div>
       {/* Barre d'onglets collante */}
-      <div className="sticky top-[4.5rem] z-30 -mx-[clamp(1rem,4vw,3rem)] border-b border-gold/15 bg-ink/90 px-[clamp(1rem,4vw,3rem)] backdrop-blur-xl no-print">
+      <div className="no-print sticky top-[4.5rem] z-30 -mx-[clamp(1rem,4vw,3rem)] border-b border-gold/15 bg-ink/90 px-[clamp(1rem,4vw,3rem)] backdrop-blur-xl">
         <div className="flex items-center justify-between gap-4">
-          <div role="tablist" aria-label={t('tabs')} className="no-scrollbar -mb-px flex gap-6 overflow-x-auto md:gap-10">
+          <div
+            role="tablist"
+            aria-label={t('tabs')}
+            className="no-scrollbar -mb-px flex gap-6 overflow-x-auto md:gap-10"
+          >
             {categories.map((c, i) => (
               <button
                 key={c.slug}
@@ -106,7 +121,11 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
               >
                 {c.name}
                 {active === c.slug && (
-                  <motion.span layoutId={`${uid}-tab-line`} className="absolute inset-x-0 bottom-0 h-px bg-gold" transition={{ duration: 0.5, ease: EASE }} />
+                  <motion.span
+                    layoutId={`${uid}-tab-line`}
+                    className="absolute inset-x-0 bottom-0 h-px bg-gold"
+                    transition={{ duration: 0.5, ease: EASE }}
+                  />
                 )}
               </button>
             ))}
@@ -119,14 +138,18 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
             className="hidden shrink-0 cursor-pointer items-center gap-2 text-[0.68rem] tracking-[0.2em] text-ivory/80 uppercase hover:text-gold sm:flex"
           >
             {t('filterTitle')}
-            {avoid.length > 0 && <span className="grid size-5 place-items-center rounded-full bg-gold text-[0.6rem] text-ink">{avoid.length}</span>}
+            {avoid.length > 0 && (
+              <span className="grid size-5 place-items-center rounded-full bg-gold text-[0.6rem] text-ink">
+                {avoid.length}
+              </span>
+            )}
             <ChevronDown size={16} className={cn('transition-transform duration-300', filtersOpen && 'rotate-180')} />
           </button>
         </div>
       </div>
 
       {/* Filtre d'allergènes */}
-      <div className="mt-6 sm:hidden no-print">
+      <div className="no-print mt-6 sm:hidden">
         <button
           type="button"
           onClick={() => setFiltersOpen((v) => !v)}
@@ -136,7 +159,11 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
         >
           <span className="flex items-center gap-2">
             {t('filterTitle')}
-            {avoid.length > 0 && <span className="grid size-5 place-items-center rounded-full bg-gold text-[0.6rem] text-ink">{avoid.length}</span>}
+            {avoid.length > 0 && (
+              <span className="grid size-5 place-items-center rounded-full bg-gold text-[0.6rem] text-ink">
+                {avoid.length}
+              </span>
+            )}
           </span>
           <ChevronDown size={16} className={cn('transition-transform duration-300', filtersOpen && 'rotate-180')} />
         </button>
@@ -149,14 +176,18 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="overflow-hidden no-print"
+            className="no-print overflow-hidden"
           >
             <fieldset className="mt-6 border border-gold/15 bg-graphite/60 p-5 md:p-6">
               <legend className="sr-only">{t('filterTitle')}</legend>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm text-mist">{t('filterHint')}</p>
                 {avoid.length > 0 && (
-                  <button type="button" onClick={() => setAvoid([])} className="link-gold cursor-pointer text-xs tracking-[0.18em] uppercase">
+                  <button
+                    type="button"
+                    onClick={() => setAvoid([])}
+                    className="link-gold cursor-pointer text-xs tracking-[0.18em] uppercase"
+                  >
                     {t('filterClear')}
                   </button>
                 )}
@@ -183,7 +214,7 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <p className="mt-4 min-h-5 text-xs text-gold no-print" aria-live="polite">
+      <p className="no-print mt-4 min-h-5 text-xs text-gold" aria-live="polite">
         {hiddenTotal > 0 ? t('hidden', { count: hiddenTotal }) : ''}
       </p>
 
@@ -208,7 +239,9 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE }}
             >
-              {c.description && <p className="max-w-2xl font-display text-xl text-ivory/80 italic md:text-2xl">{c.description}</p>}
+              {c.description && (
+                <p className="max-w-2xl font-display text-xl text-ivory/80 italic md:text-2xl">{c.description}</p>
+              )}
               {dishes.length === 0 ? (
                 <p className="mt-10 text-sm text-mist">{t('empty')}</p>
               ) : (
@@ -226,17 +259,24 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
                           <h3 className="font-display text-2xl leading-tight text-ivory transition-colors duration-500 group-hover:text-gold">
                             {dish.name}
                           </h3>
-                          <span className="mb-1.5 min-w-6 flex-1 border-b border-dotted border-ivory/25" aria-hidden="true" />
+                          <span
+                            className="mb-1.5 min-w-6 flex-1 border-b border-dotted border-ivory/25"
+                            aria-hidden="true"
+                          />
                           <p className="shrink-0 font-display text-xl text-gold tabular-nums">{dish.price}</p>
                         </div>
-                        {dish.description && <p className="mt-2 max-w-xl text-sm leading-relaxed text-mist">{dish.description}</p>}
+                        {dish.description && (
+                          <p className="mt-2 max-w-xl text-sm leading-relaxed text-mist">{dish.description}</p>
+                        )}
                         <div className="mt-3 flex flex-wrap items-center gap-2">
                           {dish.isSignature && (
                             <span className="chip border-gold/50 text-gold">
                               <Sparkle size={12} /> {t('signature')}
                             </span>
                           )}
-                          {!dish.isAvailable && <span className="chip border-danger/50 text-ivory">{t('soldOut')}</span>}
+                          {!dish.isAvailable && (
+                            <span className="chip border-danger/50 text-ivory">{t('soldOut')}</span>
+                          )}
                           {dish.tags.map((tag) => (
                             <span key={tag} className="chip">
                               {tt(tag as 'vegan')}
@@ -269,7 +309,7 @@ export function MenuBoard({ categories }: { categories: BoardCategory[] }) {
 
       <div className="mt-16 flex flex-col gap-6 border-t border-gold/15 pt-10 md:flex-row md:items-center md:justify-between">
         <p className="max-w-xl text-xs leading-relaxed text-mist">{t('priceNote')}</p>
-        <div className="flex flex-wrap gap-3 no-print">
+        <div className="no-print flex flex-wrap gap-3">
           <button type="button" onClick={() => window.print()} className="btn btn-ghost min-h-11 px-5 py-2.5">
             <Printer size={16} /> {t('print')}
           </button>

@@ -29,7 +29,12 @@ export function MapEmbed({ className }: { className?: string }) {
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
           {/* Plan stylisé (purement décoratif) */}
-          <svg aria-hidden="true" className="absolute inset-0 -z-10 size-full opacity-40" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 240">
+          <svg
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 size-full opacity-40"
+            preserveAspectRatio="xMidYMid slice"
+            viewBox="0 0 400 240"
+          >
             <g fill="none" stroke="#D4AF37" strokeOpacity="0.25">
               <path d="M-10 170 C 80 140, 140 200, 230 150 S 360 90, 420 120" strokeWidth="6" />
               <path d="M60 -10 C 90 80, 70 160, 120 260" strokeWidth="3" />
@@ -42,7 +47,11 @@ export function MapEmbed({ className }: { className?: string }) {
           <span className="grid size-14 place-items-center rounded-full border border-gold/50 bg-ink/70 text-gold">
             <MapPin size={24} />
           </span>
-          <button type="button" onClick={() => setLoaded(true)} className="btn btn-outline min-h-11 bg-ink/60 px-4 py-2.5 whitespace-normal text-center">
+          <button
+            type="button"
+            onClick={() => setLoaded(true)}
+            className="btn btn-outline min-h-11 bg-ink/60 px-4 py-2.5 text-center whitespace-normal"
+          >
             {t('load')}
           </button>
           <p className="max-w-xs text-xs leading-relaxed text-mist">{t('notice')}</p>

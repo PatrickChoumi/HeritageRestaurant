@@ -22,7 +22,11 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   }
 
   return (
-    <div role="group" aria-label={t('language')} className={cn('flex items-center text-[0.72rem] tracking-[0.2em]', className)}>
+    <div
+      role="group"
+      aria-label={t('language')}
+      className={cn('flex items-center text-[0.72rem] tracking-[0.2em]', className)}
+    >
       {routing.locales.map((l, i) => (
         <span key={l} className="flex items-center">
           {i > 0 && <span className="mx-2 h-3 w-px bg-ivory/25" aria-hidden="true" />}

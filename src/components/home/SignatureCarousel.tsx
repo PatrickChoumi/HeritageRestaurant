@@ -98,7 +98,10 @@ export function SignatureCarousel({ dishes }: { dishes: SignatureCard[] }) {
                       )}
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" aria-hidden="true" />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent"
+                    aria-hidden="true"
+                  />
                   <span className="absolute top-5 left-5 font-display text-sm text-gold tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -112,7 +115,10 @@ export function SignatureCarousel({ dishes }: { dishes: SignatureCard[] }) {
                       <h3 className="font-display text-[1.65rem] leading-tight">{dish.name}</h3>
                       <p className="shrink-0 pb-1 text-sm text-gold tabular-nums">{dish.price}</p>
                     </div>
-                    <div className="mt-3 h-px w-12 bg-gold transition-all duration-700 group-hover:w-full" aria-hidden="true" />
+                    <div
+                      className="mt-3 h-px w-12 bg-gold transition-all duration-700 group-hover:w-full"
+                      aria-hidden="true"
+                    />
                     <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-ivory/75">{dish.description}</p>
                   </div>
                 </div>

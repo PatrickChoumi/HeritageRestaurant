@@ -21,7 +21,13 @@ const STYLES: Record<ReservationStatus, { className: string; symbol: string }> =
 export function StatusBadge({ status, className }: { status: ReservationStatus; className?: string }) {
   const style = STYLES[status];
   return (
-    <span className={cn('inline-flex items-center gap-1.5 border px-2 py-0.5 text-[0.7rem] whitespace-nowrap', style.className, className)}>
+    <span
+      className={cn(
+        'inline-flex items-center gap-1.5 border px-2 py-0.5 text-[0.7rem] whitespace-nowrap',
+        style.className,
+        className,
+      )}
+    >
       <span aria-hidden="true">{style.symbol}</span>
       {STATUS_LABELS[status]}
     </span>

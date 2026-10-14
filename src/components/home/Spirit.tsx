@@ -81,7 +81,10 @@ export async function Spirit() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <Link href="/le-restaurant" className="group mt-10 inline-flex items-center gap-4 text-xs tracking-[0.25em] text-gold uppercase">
+            <Link
+              href="/le-restaurant"
+              className="group mt-10 inline-flex items-center gap-4 text-xs tracking-[0.25em] text-gold uppercase"
+            >
               <span className="link-gold">{t('cta')}</span>
               <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-1.5" />
             </Link>
@@ -93,7 +96,12 @@ export async function Spirit() {
       <div className="container-luxe mt-32 md:mt-40">
         <ul className="grid gap-px overflow-hidden border border-gold/10 bg-gold/10 md:grid-cols-3">
           {PILLARS.map(({ key, Icon }, i) => (
-            <Reveal as="li" key={key} delay={i * 0.12} className="group relative bg-ink p-10 transition-colors duration-700 hover:bg-graphite md:p-12">
+            <Reveal
+              as="li"
+              key={key}
+              delay={i * 0.12}
+              className="group relative bg-ink p-10 transition-colors duration-700 hover:bg-graphite md:p-12"
+            >
               <span className="font-display text-sm text-gold/70 tabular-nums">0{i + 1}</span>
               <Icon size={34} className="mt-6 text-gold transition-transform duration-700 group-hover:-translate-y-1" />
               <h3 className="title-md mt-6">{t(`pillars.${key}.title`)}</h3>

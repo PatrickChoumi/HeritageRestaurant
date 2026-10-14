@@ -46,7 +46,9 @@ describe('créneaux', () => {
   it('refuse les demandes hors règles', () => {
     expect(checkBookable('2026-10-14', '20:00', 2, NOW)).toBeNull();
     expect(checkBookable('2026-10-13', '20:00', 2, NOW)).toBe('datePast');
-    expect(checkBookable(addDays(NOW.date, restaurant.reservation.maxDaysAhead + 1), '20:00', 2, NOW)).toBe('dateTooFar');
+    expect(checkBookable(addDays(NOW.date, restaurant.reservation.maxDaysAhead + 1), '20:00', 2, NOW)).toBe(
+      'dateTooFar',
+    );
     expect(checkBookable('2026-10-14', '20:15', 2, NOW)).toBe('slotInvalid');
     expect(checkBookable('2026-10-14', '16:00', 2, NOW)).toBe('slotInvalid');
     expect(checkBookable('2026-10-14', '20:00', 0, NOW)).toBe('guestsInvalid');
@@ -80,9 +82,16 @@ describe('disponibilités', () => {
   });
 
   it('applique aussi la capacité de la salle sur tout le service', () => {
-    const availability = computeAvailability('2026-10-20', 2, { bySlot: {}, byService: { dinner: capacityPerService - 1 } }, NOW);
+    const availability = computeAvailability(
+      '2026-10-20',
+      2,
+      { bySlot: {}, byService: { dinner: capacityPerService - 1 } },
+      NOW,
+    );
     expect(availability.services.find((s) => s.id === 'dinner')!.slots.every((s) => s.status === 'full')).toBe(true);
-    expect(availability.services.find((s) => s.id === 'lunch')!.slots.every((s) => s.status === 'available')).toBe(true);
+    expect(availability.services.find((s) => s.id === 'lunch')!.slots.every((s) => s.status === 'available')).toBe(
+      true,
+    );
   });
 });
 
@@ -95,10 +104,18 @@ describe('ouvert maintenant', () => {
     // Samedi 17 octobre à 1h30 : encore dans la soirée karaoké du vendredi
     expect(openStatus({ date: '2026-10-17', minutes: 90 })).toEqual({ open: true, until: '02:00' });
     // Samedi à 3h : fermé, ouvre à 11h
-    expect(openStatus({ date: '2026-10-17', minutes: 180 })).toEqual({ open: false, until: '11:00', nextDay: undefined });
+    expect(openStatus({ date: '2026-10-17', minutes: 180 })).toEqual({
+      open: false,
+      until: '11:00',
+      nextDay: undefined,
+    });
   });
 
   it('annonce la réouverture du lendemain après la fermeture', () => {
-    expect(openStatus({ date: '2026-10-18', minutes: 22 * 60 + 30 })).toEqual({ open: false, until: '11:00', nextDay: 1 });
+    expect(openStatus({ date: '2026-10-18', minutes: 22 * 60 + 30 })).toEqual({
+      open: false,
+      until: '11:00',
+      nextDay: 1,
+    });
   });
 });

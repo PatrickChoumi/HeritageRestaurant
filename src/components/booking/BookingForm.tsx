@@ -63,7 +63,11 @@ export function BookingForm({ className }: { className?: string }) {
   const startedAt = useRef(0);
 
   // « Aujourd'hui » à Yaoundé, lu dans le navigateur : la page peut rester statique (null côté serveur)
-  const today = useSyncExternalStore(noopSubscribe, () => restaurantNow().date, () => null);
+  const today = useSyncExternalStore(
+    noopSubscribe,
+    () => restaurantNow().date,
+    () => null,
+  );
   const defaultDate = useMemo(() => (today ? firstBookableDate(today) : null), [today]);
 
   const [step, setStep] = useState<Step>('table');
@@ -92,7 +96,9 @@ export function BookingForm({ className }: { className?: string }) {
 
   // Service affiché : celui choisi, sinon le premier qui a encore de la place (dîner de préférence)
   const isOpen = (id: ServiceId) =>
-    availability?.services.find((s) => s.id === id)?.slots.some((s) => s.status === 'available' || s.status === 'limited');
+    availability?.services
+      .find((s) => s.id === id)
+      ?.slots.some((s) => s.status === 'available' || s.status === 'limited');
   const service: ServiceId = pickedService ?? (isOpen('dinner') || !isOpen('lunch') ? 'dinner' : 'lunch');
 
   useEffect(() => {
@@ -110,7 +116,9 @@ export function BookingForm({ className }: { className?: string }) {
         // Un créneau choisi qui n'est plus disponible est désélectionné
         setSlot((selected) => {
           if (!selected) return selected;
-          const match = data.services.find((s) => s.id === selected.service)?.slots.find((s) => s.time === selected.time);
+          const match = data.services
+            .find((s) => s.id === selected.service)
+            ?.slots.find((s) => s.time === selected.time);
           return match && (match.status === 'available' || match.status === 'limited') ? selected : null;
         });
       })
@@ -157,7 +165,7 @@ export function BookingForm({ className }: { className?: string }) {
   }, [details, date, slot, guests, locale]);
 
   const errorFor = (field: Field): string | undefined => {
-    const code = serverErrors[field] ?? ((touched[field] || submitted) ? clientErrors[field] : undefined);
+    const code = serverErrors[field] ?? (touched[field] || submitted ? clientErrors[field] : undefined);
     if (!code) return undefined;
     if (field === 'consent') return t('errors.consent');
     if (code === 'required') return t('errors.required');
@@ -288,9 +296,15 @@ export function BookingForm({ className }: { className?: string }) {
   const bookable = (s: SlotAvailability) => s.status === 'available' || s.status === 'limited';
 
   return (
-    <div ref={rootRef} className={cn('relative scroll-mt-28 border border-gold/20 bg-coal/90 backdrop-blur-sm', className)}>
+    <div
+      ref={rootRef}
+      className={cn('relative scroll-mt-28 border border-gold/20 bg-coal/90 backdrop-blur-sm', className)}
+    >
       {/* Étapes */}
-      <ol className="grid grid-cols-3 border-b border-gold/15" aria-label={t('stepOf', { current: stepIndex + 1, total: 3 })}>
+      <ol
+        className="grid grid-cols-3 border-b border-gold/15"
+        aria-label={t('stepOf', { current: stepIndex + 1, total: 3 })}
+      >
         {STEPS.map((s, i) => (
           <li
             key={s}
@@ -310,7 +324,11 @@ export function BookingForm({ className }: { className?: string }) {
             </span>
             <span className="hidden sm:inline">{t(`steps.${s}`)}</span>
             {i === stepIndex && (
-              <motion.span layoutId={`${uid}-step`} className="absolute inset-x-0 -bottom-px h-px bg-gold" transition={{ duration: 0.6, ease: EASE }} />
+              <motion.span
+                layoutId={`${uid}-step`}
+                className="absolute inset-x-0 -bottom-px h-px bg-gold"
+                transition={{ duration: 0.6, ease: EASE }}
+              />
             )}
           </li>
         ))}
@@ -373,7 +391,9 @@ export function BookingForm({ className }: { className?: string }) {
                     onClick={() => setShowGroup(true)}
                     className={cn(
                       'h-11 cursor-pointer border px-4 text-sm transition-colors duration-300',
-                      showGroup ? 'border-gold bg-gold text-ink' : 'border-ivory/15 text-ivory/85 hover:border-gold/60 hover:text-gold',
+                      showGroup
+                        ? 'border-gold bg-gold text-ink'
+                        : 'border-ivory/15 text-ivory/85 hover:border-gold/60 hover:text-gold',
                     )}
                   >
                     {t('more')}
@@ -388,7 +408,9 @@ export function BookingForm({ className }: { className?: string }) {
                       className="overflow-hidden"
                     >
                       <div className="mt-4 flex flex-col gap-4 border border-gold/25 bg-gold/[0.06] p-4 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="text-sm leading-relaxed text-ivory/90">{t('groupNotice', { max: maxGuestsOnline })}</p>
+                        <p className="text-sm leading-relaxed text-ivory/90">
+                          {t('groupNotice', { max: maxGuestsOnline })}
+                        </p>
                         <a
                           href={whatsappUrl(t('groupWhatsappMessage', { max: maxGuestsOnline }))}
                           target="_blank"
@@ -413,13 +435,21 @@ export function BookingForm({ className }: { className?: string }) {
                     <div className="no-scrollbar mask-fade-x -mx-5 flex gap-2 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:px-8 md:-mx-10 md:px-10">
                       {stripDates.length === 0
                         ? Array.from({ length: 7 }, (_, i) => (
-                            <span key={i} className="h-[4.75rem] w-[4.25rem] shrink-0 animate-shimmer bg-ivory/5" aria-hidden="true" />
+                            <span
+                              key={i}
+                              className="h-[4.75rem] w-[4.25rem] shrink-0 animate-shimmer bg-ivory/5"
+                              aria-hidden="true"
+                            />
                           ))
                         : stripDates.map((d) => {
                             const closed = servicesFor(d).length === 0;
                             const parts = formatDateShort(locale, d);
                             const label =
-                              d === today ? t('today') : today && d === addDays(today, 1) ? t('tomorrow') : parts.weekday;
+                              d === today
+                                ? t('today')
+                                : today && d === addDays(today, 1)
+                                  ? t('tomorrow')
+                                  : parts.weekday;
                             return (
                               <button
                                 key={d}
@@ -438,7 +468,9 @@ export function BookingForm({ className }: { className?: string }) {
                                     : 'border-ivory/15 text-ivory/85 hover:border-gold/60',
                                 )}
                               >
-                                <span className="text-[0.6rem] tracking-[0.12em] whitespace-nowrap uppercase">{label}</span>
+                                <span className="text-[0.6rem] tracking-[0.12em] whitespace-nowrap uppercase">
+                                  {label}
+                                </span>
                                 <span className="font-display text-2xl leading-none">{parts.day}</span>
                                 <span className="text-[0.62rem] tracking-[0.12em] uppercase">{parts.month}</span>
                               </button>
@@ -469,8 +501,15 @@ export function BookingForm({ className }: { className?: string }) {
                   {/* Créneaux */}
                   <fieldset>
                     <legend className="sr-only">{t('time')}</legend>
-                    <div className="mb-5 flex items-center gap-6 border-b border-ivory/10" role="tablist" aria-label={t('time')}>
-                      {(availability?.services ?? servicesFor(date ?? today ?? '2026-01-01').map((s) => ({ id: s.id, slots: [] }))).map((s) => {
+                    <div
+                      className="mb-5 flex items-center gap-6 border-b border-ivory/10"
+                      role="tablist"
+                      aria-label={t('time')}
+                    >
+                      {(
+                        availability?.services ??
+                        servicesFor(date ?? today ?? '2026-01-01').map((s) => ({ id: s.id, slots: [] }))
+                      ).map((s) => {
                         const count = s.slots.filter(bookable).length;
                         return (
                           <button
@@ -491,7 +530,10 @@ export function BookingForm({ className }: { className?: string }) {
                               </span>
                             )}
                             {service === s.id && (
-                              <motion.span layoutId={`${uid}-service`} className="absolute inset-x-0 bottom-0 h-px bg-gold" />
+                              <motion.span
+                                layoutId={`${uid}-service`}
+                                className="absolute inset-x-0 bottom-0 h-px bg-gold"
+                              />
                             )}
                           </button>
                         );
@@ -502,7 +544,11 @@ export function BookingForm({ className }: { className?: string }) {
                       {loadError ? (
                         <p className="flex flex-wrap items-center gap-4 text-sm text-mist">
                           {t('availabilityError')}
-                          <button type="button" onClick={() => setRefresh((n) => n + 1)} className="link-gold cursor-pointer">
+                          <button
+                            type="button"
+                            onClick={() => setRefresh((n) => n + 1)}
+                            className="link-gold cursor-pointer"
+                          >
                             {t('retry')}
                           </button>
                         </p>
@@ -531,7 +577,10 @@ export function BookingForm({ className }: { className?: string }) {
                             const selected = slot?.service === service && slot.time === s.time;
                             const ok = bookable(s);
                             return (
-                              <motion.li key={s.time} variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}>
+                              <motion.li
+                                key={s.time}
+                                variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
+                              >
                                 <button
                                   type="button"
                                   disabled={!ok}
@@ -549,13 +598,22 @@ export function BookingForm({ className }: { className?: string }) {
                                         : 'border-ivory/5 text-ivory/30',
                                   )}
                                 >
-                                  <span className={cn(s.status === 'full' && 'line-through')}>{formatTime(locale, s.time)}</span>
+                                  <span className={cn(s.status === 'full' && 'line-through')}>
+                                    {formatTime(locale, s.time)}
+                                  </span>
                                   {s.status === 'limited' && (
-                                    <span className={cn('text-[0.58rem] tracking-[0.1em] uppercase', selected ? 'text-ink/75' : 'text-gold')}>
+                                    <span
+                                      className={cn(
+                                        'text-[0.58rem] tracking-[0.1em] uppercase',
+                                        selected ? 'text-ink/75' : 'text-gold',
+                                      )}
+                                    >
                                       {t('slotLimited')}
                                     </span>
                                   )}
-                                  {s.status === 'full' && <span className="text-[0.58rem] tracking-[0.1em] uppercase">{t('slotFull')}</span>}
+                                  {s.status === 'full' && (
+                                    <span className="text-[0.58rem] tracking-[0.1em] uppercase">{t('slotFull')}</span>
+                                  )}
                                 </button>
                               </motion.li>
                             );
@@ -609,16 +667,61 @@ export function BookingForm({ className }: { className?: string }) {
                     {t('guestsValue', { count: guests })}
                   </p>
                 </div>
-                <button type="button" onClick={() => setStep('table')} className="link-gold cursor-pointer text-xs tracking-[0.2em] uppercase">
+                <button
+                  type="button"
+                  onClick={() => setStep('table')}
+                  className="link-gold cursor-pointer text-xs tracking-[0.2em] uppercase"
+                >
                   {t('edit')}
                 </button>
               </div>
 
               <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
-                <TextField id={`${uid}-firstName`} label={t('firstName')} autoComplete="given-name" value={details.firstName} error={errorFor('firstName')} onChange={(v) => update('firstName', v)} onBlur={() => setTouched((x) => ({ ...x, firstName: true }))} maxLength={60} />
-                <TextField id={`${uid}-lastName`} label={t('lastName')} autoComplete="family-name" value={details.lastName} error={errorFor('lastName')} onChange={(v) => update('lastName', v)} onBlur={() => setTouched((x) => ({ ...x, lastName: true }))} maxLength={60} />
-                <TextField id={`${uid}-email`} type="email" inputMode="email" label={t('email')} autoComplete="email" value={details.email} error={errorFor('email')} onChange={(v) => update('email', v)} onBlur={() => setTouched((x) => ({ ...x, email: true }))} maxLength={254} />
-                <TextField id={`${uid}-phone`} type="tel" inputMode="tel" label={t('phone')} hint={t('phoneHint')} autoComplete="tel" value={details.phone} error={errorFor('phone')} onChange={(v) => update('phone', v)} onBlur={() => setTouched((x) => ({ ...x, phone: true }))} maxLength={32} />
+                <TextField
+                  id={`${uid}-firstName`}
+                  label={t('firstName')}
+                  autoComplete="given-name"
+                  value={details.firstName}
+                  error={errorFor('firstName')}
+                  onChange={(v) => update('firstName', v)}
+                  onBlur={() => setTouched((x) => ({ ...x, firstName: true }))}
+                  maxLength={60}
+                />
+                <TextField
+                  id={`${uid}-lastName`}
+                  label={t('lastName')}
+                  autoComplete="family-name"
+                  value={details.lastName}
+                  error={errorFor('lastName')}
+                  onChange={(v) => update('lastName', v)}
+                  onBlur={() => setTouched((x) => ({ ...x, lastName: true }))}
+                  maxLength={60}
+                />
+                <TextField
+                  id={`${uid}-email`}
+                  type="email"
+                  inputMode="email"
+                  label={t('email')}
+                  autoComplete="email"
+                  value={details.email}
+                  error={errorFor('email')}
+                  onChange={(v) => update('email', v)}
+                  onBlur={() => setTouched((x) => ({ ...x, email: true }))}
+                  maxLength={254}
+                />
+                <TextField
+                  id={`${uid}-phone`}
+                  type="tel"
+                  inputMode="tel"
+                  label={t('phone')}
+                  hint={t('phoneHint')}
+                  autoComplete="tel"
+                  value={details.phone}
+                  error={errorFor('phone')}
+                  onChange={(v) => update('phone', v)}
+                  onBlur={() => setTouched((x) => ({ ...x, phone: true }))}
+                  maxLength={32}
+                />
               </div>
 
               <fieldset>
@@ -632,7 +735,9 @@ export function BookingForm({ className }: { className?: string }) {
                       onClick={() => update('occasion', details.occasion === o ? undefined : o)}
                       className={cn(
                         'min-h-10 cursor-pointer border px-4 text-xs tracking-[0.08em] transition-colors duration-300',
-                        details.occasion === o ? 'border-gold bg-gold text-ink' : 'border-ivory/15 text-ivory/80 hover:border-gold/60',
+                        details.occasion === o
+                          ? 'border-gold bg-gold text-ink'
+                          : 'border-ivory/15 text-ivory/80 hover:border-gold/60',
                       )}
                     >
                       {t(`occasions.${o}`)}
@@ -664,7 +769,13 @@ export function BookingForm({ className }: { className?: string }) {
               {/* Champ piège pour les robots (invisible pour les humains et les lecteurs d'écran) */}
               <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
                 <label htmlFor={`${uid}-website`}>{t('honeypot')}</label>
-                <input id={`${uid}-website`} tabIndex={-1} autoComplete="off" value={details.website} onChange={(e) => update('website', e.target.value)} />
+                <input
+                  id={`${uid}-website`}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={details.website}
+                  onChange={(e) => update('website', e.target.value)}
+                />
               </div>
 
               <div>
@@ -699,13 +810,20 @@ export function BookingForm({ className }: { className?: string }) {
               </div>
 
               <div className="flex flex-col-reverse gap-4 border-t border-ivory/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-                <button type="button" onClick={() => setStep('table')} className="inline-flex cursor-pointer items-center gap-3 text-xs tracking-[0.2em] text-mist uppercase hover:text-ivory">
+                <button
+                  type="button"
+                  onClick={() => setStep('table')}
+                  className="inline-flex cursor-pointer items-center gap-3 text-xs tracking-[0.2em] text-mist uppercase hover:text-ivory"
+                >
                   <ArrowLeft size={16} /> {t('back')}
                 </button>
                 <button type="submit" disabled={pending} className="btn btn-gold w-full sm:w-auto">
                   {pending ? (
                     <>
-                      <span className="size-4 animate-spin rounded-full border-2 border-ink/30 border-t-ink" aria-hidden="true" />
+                      <span
+                        className="size-4 animate-spin rounded-full border-2 border-ink/30 border-t-ink"
+                        aria-hidden="true"
+                      />
                       {t('submitting')}
                     </>
                   ) : (
@@ -733,8 +851,28 @@ export function BookingForm({ className }: { className?: string }) {
               role="status"
             >
               <svg viewBox="0 0 80 80" className="mx-auto size-20" aria-hidden="true">
-                <motion.circle cx="40" cy="40" r="37" fill="none" stroke="#D4AF37" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, ease: EASE }} />
-                <motion.path d="M25 41l10 10 20-22" fill="none" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.6, delay: 0.7, ease: EASE }} />
+                <motion.circle
+                  cx="40"
+                  cy="40"
+                  r="37"
+                  fill="none"
+                  stroke="#D4AF37"
+                  strokeWidth="1.5"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1, ease: EASE }}
+                />
+                <motion.path
+                  d="M25 41l10 10 20-22"
+                  fill="none"
+                  stroke="#D4AF37"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
+                />
               </svg>
               <h3 className="title-md mt-6">{t('success.title', { name: success.firstName })}</h3>
               <p className="lead mt-3">{t('success.lead')}</p>
@@ -742,14 +880,23 @@ export function BookingForm({ className }: { className?: string }) {
               <div className="mx-auto mt-8 max-w-md border border-gold/30 p-6">
                 <p className="label">{t('success.reference')}</p>
                 <div className="mt-2 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4">
-                  <p className="font-logo text-2xl tracking-[0.14em] whitespace-nowrap text-gold sm:text-3xl">{success.reference}</p>
-                  <button type="button" onClick={copyReference} className="cursor-pointer text-[0.65rem] tracking-[0.18em] text-mist uppercase hover:text-gold">
+                  <p className="font-logo text-2xl tracking-[0.14em] whitespace-nowrap text-gold sm:text-3xl">
+                    {success.reference}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={copyReference}
+                    className="cursor-pointer text-[0.65rem] tracking-[0.18em] text-mist uppercase hover:text-gold"
+                  >
                     {copied ? t('copied') : t('copy')}
                   </button>
                 </div>
                 <div className="hairline my-5" />
                 <p className="font-display text-xl first-letter:uppercase">
-                  {t('summaryLine', { date: formatDateLong(locale, success.date), time: formatTime(locale, success.time) })}
+                  {t('summaryLine', {
+                    date: formatDateLong(locale, success.date),
+                    time: formatTime(locale, success.time),
+                  })}
                 </p>
                 <p className="mt-1 text-sm text-mist">
                   {t('guestsValue', { count: success.guests })} · {success.firstName} {success.lastName}
@@ -762,7 +909,12 @@ export function BookingForm({ className }: { className?: string }) {
                   <WhatsApp size={16} className="text-[#25D366]" /> {t('success.whatsappTitle')}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-ivory/80">{t('success.whatsappText')}</p>
-                <a href={success.whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-gold mt-5 w-full">
+                <a
+                  href={success.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-gold mt-5 w-full"
+                >
                   <WhatsApp size={16} /> {t('success.whatsappCta')}
                 </a>
               </div>

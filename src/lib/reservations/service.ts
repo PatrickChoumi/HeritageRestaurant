@@ -48,9 +48,7 @@ export async function getAvailability(date: string, guests: number): Promise<Ava
 
 export type Reservation = typeof reservations.$inferSelect;
 
-export type CreateResult =
-  | { ok: true; reservation: Reservation }
-  | { ok: false; error: BookingError | 'full' };
+export type CreateResult = { ok: true; reservation: Reservation } | { ok: false; error: BookingError | 'full' };
 
 /**
  * Enregistre une réservation. Un verrou PostgreSQL par date sérialise les demandes simultanées :

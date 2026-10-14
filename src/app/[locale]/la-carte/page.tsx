@@ -48,7 +48,9 @@ function menuJsonLd(locale: AppLocale, name: string, categories: MenuCategory[])
           priceCurrency: restaurant.currency,
           availability: d.isAvailable ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
         },
-        ...(d.tags.some((tag) => DIETS[tag]) ? { suitableForDiet: d.tags.map((tag) => DIETS[tag]).filter(Boolean) } : {}),
+        ...(d.tags.some((tag) => DIETS[tag])
+          ? { suitableForDiet: d.tags.map((tag) => DIETS[tag]).filter(Boolean) }
+          : {}),
       })),
     })),
   };
