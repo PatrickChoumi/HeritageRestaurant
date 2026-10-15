@@ -48,7 +48,9 @@ const nextConfig: NextConfig = {
   // PGlite charge ses fichiers WebAssembly depuis node_modules : on ne l'intègre pas au bundle
   serverExternalPackages: ['@electric-sql/pglite'],
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // WebP seulement : les sources sont déjà des WebP optimisés ; l'encodage AVIF coûte ~40× plus de
+    // temps processeur (15 s par image sur une petite instance) pour des fichiers à peine plus légers.
+    formats: ['image/webp'],
     qualities: [70, 80, 90],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },

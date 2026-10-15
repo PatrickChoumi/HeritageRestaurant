@@ -156,9 +156,9 @@ chaque nouvelle réservation).
 **Render** : le blueprint `render.yaml` crée le site et sa base PostgreSQL (Francfort). Au démarrage,
 `npm run db:setup` applique les migrations, ajoute la carte de départ et crée le compte de l'équipe à partir
 de `ADMIN_EMAIL` / `ADMIN_PASSWORD` (12 caractères minimum) s'il n'existe pas encore. `DATABASE_URL` y est
-obligatoire : PGlite consomme environ 600 Mo, au-delà des 512 Mo de l'offre gratuite. Sur l'offre gratuite,
-le site se met en veille après 15 min sans visite (premier affichage plus lent) et la base expire au bout
-de 30 jours sauf passage à une offre payante.
+obligatoire (PGlite consomme environ 600 Mo, au-delà des 512 Mo de l'offre gratuite) : base Render, ou Neon
+avec son URL « pooler » (pas de date d'expiration, contrairement à la base Render gratuite, limitée à 30 jours).
+Sur l'offre gratuite, le site se met en veille après 15 min sans visite (premier affichage plus lent).
 
 **Serveur Node / Docker** : `docker compose --profile app up --build` (site + PostgreSQL), ou
 `npm run build && npm run db:setup && npm start` sur n'importe quel serveur Node.js.
