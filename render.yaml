@@ -1,0 +1,43 @@
+# Blueprint Render : site Next.js + base PostgreSQL (Francfort, offres gratuites).
+# Render → New → Blueprint → choisir ce dépôt ; les valeurs « sync: false » sont demandées à la création.
+services:
+  - type: web
+    name: heritage-bastos
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm ci && npm run build
+    # Migrations, carte de départ et compte admin (ADMIN_EMAIL / ADMIN_PASSWORD) : idempotent
+    startCommand: npm run db:setup && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: '22'
+      - key: NEXT_TELEMETRY_DISABLED
+        value: '1'
+      - key: DATABASE_URL
+        fromDatabase:
+          name: heritage-db
+          property: connectionString
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: CRON_SECRET
+        generateValue: true
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: RESTAURANT_EMAIL
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+
+databases:
+  - name: heritage-db
+    region: frankfurt
+    plan: free
+    postgresMajorVersion: '16'

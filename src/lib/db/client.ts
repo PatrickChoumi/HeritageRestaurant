@@ -42,9 +42,11 @@ async function createDb(): Promise<Db> {
     return drizzle(client, { schema }) as unknown as Db;
   }
 
-  if (process.env.VERCEL) {
+  // Vercel (serverless) ou Render (512 Mo sur l'offre gratuite, alors que PGlite en consomme ~600) :
+  // une vraie base PostgreSQL est indispensable.
+  if (process.env.VERCEL || process.env.RENDER) {
     throw new Error(
-      'DATABASE_URL est obligatoire en production : créez une base PostgreSQL (Neon, Supabase…) et ajoutez son URL aux variables d’environnement.',
+      'DATABASE_URL est obligatoire en production : créez une base PostgreSQL (Neon, Supabase, Render…) et ajoutez son URL aux variables d’environnement.',
     );
   }
   return createEmbeddedDb();

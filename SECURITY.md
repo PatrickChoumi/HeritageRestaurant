@@ -39,7 +39,7 @@ architecture : **ce qui est protégé, comment, où le vérifier, et ce qui rest
 - **R5 — Données personnelles.** Noms, e-mails et téléphones des réservations restent en base : la purge après
   12 mois annoncée dans la politique de confidentialité est à automatiser avant l'ouverture.
 - **R6 — Base locale PGlite.** Réservée au développement et à la démonstration (un seul processus, non
-  chiffrée). En production, `DATABASE_URL` est obligatoire sur Vercel.
+  chiffrée). En production, `DATABASE_URL` est obligatoire sur Vercel et Render.
 
 ## Signaler une faille
 
